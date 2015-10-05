@@ -1,0 +1,1 @@
+# mtb-trail-status-rails
