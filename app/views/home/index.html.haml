@@ -1,1 +1,39 @@
-%h2 Hello from Rails
+.full-panel
+  .container
+    .jumbotron
+      %h1 Get Text Alerts
+      %h2 for charlotte area trails
+      %p Be the first to know when trails open or close. We constantly monitor trail status updates and text you as soon as your favorite trail opens or closes.
+      #form.form-phone
+        .input-group.input-group-lg.phone-input
+          %input.input-phone.form-control{type: 'tel', placeholder: '704-555-5555'}
+          %span.input-group-btn
+            %input.btn.btn-success.submit-phone{href: '#', type: 'submit', value: 'Get Started!'}
+      %p.details
+        %em Choose the trails you want to receive messages for on the next screen.
+
+.container
+  %h2
+    Current Trail Statuses
+    .pull-right
+      .btn-group.btn-group-sm{role: 'group tab-list'}
+        %a.btn.btn-default{href: '#tab-list', role: 'tab presentation', 'data-toggle' => 'tab'}
+          %i.glyphicon.glyphicon-list
+        %a.btn.btn-default{href: '#tab-map', role: 'tab presentation', 'data-toggle' => 'tab'}
+          %i.glyphicon.glyphicon-map-marker
+  .tab-content
+    .tab-pane.active{id: 'tab-list'}
+      %table.table.table-striped.statuses
+        %tbody
+          - @trails.each do |trail|
+            - glyphicon = trail.status === 'open' ? 'glyphicon-ok' : 'glyphicon-remove'
+            %tr.trail
+              %td.name
+                %h3
+                  = link_to trail do
+                    %i.glyphicon{class: '#{glyphicon} #{trail.status}'}
+                    = trail.display_name
+              %td.date.text-muted
+                %span{title: "#{trail.status_date}"}= trail.status_date
+    .tab-pane{id: 'tab-map'}
+      #map.map

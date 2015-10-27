@@ -1,0 +1,48 @@
+!!! 5
+%html{lang: 'en'}
+
+%head
+  %title Charlotte Mountain Bike Trail Statuses
+
+  %meta{charset: 'utf-8'}
+  %meta{'http-equiv' => 'X-UA-Compatible', content: 'IE=edge'}
+  %meta{name: 'viewport', content: 'width=device-width, initial-scale=1'}
+
+  %meta{property: 'og:url', content: 'http://mtbtrailstat.us'}
+  %meta{property: 'og:title', content: 'MTB Trail Status sends you a text message when your favorite Charlotte mountain bike trails open or close.'}
+  %meta{property: 'og:site_name', content: 'MTB Trail Status'}
+  %meta{property: 'og:description', content: 'Use MTB Trail Status to set up text message alerts when your favorite Charlottte, NC mountain bike trails open or close. Be the first to know when it\'s time to hit the trail or when to cancel your group ride.'}
+  %meta{property: 'og:image', content: asset_path('og.jpg')}
+
+  - if @map
+    %link{rel: 'stylesheet', type: 'text/css', href: '//api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css'}
+
+  %link{rel: 'stylesheet', type: 'text/css', href: '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'}
+  %link{rel: 'stylesheet', type: 'text/css', href: 'http://fonts.googleapis.com/css?family=Titillium+Web:400,700'}
+
+  = stylesheet_link_tag    'application', media: 'all'
+  = javascript_include_tag 'application'
+  = csrf_meta_tags
+
+%body{class: "#{body_class}"}
+  .top
+    .container
+      .header.clearfix
+        %nav
+          %ul.nav.nav-pills.pull-right
+            %li{role: 'presentation', class: 'active'}
+              = link_to 'Home', :root
+            %li{role: 'presentation'}
+              = link_to 'About', about_path
+        %h3.text-muted
+          = link_to 'MTB Trail Status', :root
+  .container
+  = yield
+  - unless @no_footer
+    .container
+      %footer.footer
+        %p MTB Trail Status, built by #{link_to 'Jason Sanford', 'mailto:jasonsanford@gmail.com'}. Trail statuses from #{link_to 'various sources', about_path}.
+  %script{src: '//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js'}
+  %script{src: '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'}
+  - if @map
+    %script{src: '//api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js'}
