@@ -6,7 +6,10 @@ class TrailsController < ApplicationController
 
   def index; end
 
-  def show; end
+  def show
+    @no_footer = true
+    @map       = true
+  end
 
 private
   def load_trail

@@ -26,14 +26,16 @@
       %table.table.table-striped.statuses
         %tbody
           - @trails.each do |trail|
-            - glyphicon = trail.status === 'open' ? 'glyphicon-ok' : 'glyphicon-remove'
+            - glyphicon = trail.status == 'open' ? 'glyphicon-ok' : 'glyphicon-remove'
             %tr.trail
               %td.name
                 %h3
                   = link_to trail do
-                    %i.glyphicon{class: '#{glyphicon} #{trail.status}'}
+                    %i.glyphicon{class: "#{glyphicon} #{trail.status}"}
                     = trail.display_name
               %td.date.text-muted
-                %span{title: "#{trail.status_date}"}= trail.status_date
+                %span{title: "#{trail.status_date}"}
+                  = time_ago_in_words trail.status_date
+                  ago
     .tab-pane{id: 'tab-map'}
       #map.map

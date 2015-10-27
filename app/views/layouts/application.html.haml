@@ -20,11 +20,12 @@
   %link{rel: 'stylesheet', type: 'text/css', href: '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'}
   %link{rel: 'stylesheet', type: 'text/css', href: 'http://fonts.googleapis.com/css?family=Titillium+Web:400,700'}
 
-  = stylesheet_link_tag    'application', media: 'all'
-  = javascript_include_tag 'application'
+  = stylesheet_link_tag 'application', media: 'all'
   = csrf_meta_tags
 
 %body{class: "#{body_class}"}
+  :javascript
+    window.mtb = {};
   .top
     .container
       .header.clearfix
@@ -42,7 +43,8 @@
     .container
       %footer.footer
         %p MTB Trail Status, built by #{link_to 'Jason Sanford', 'mailto:jasonsanford@gmail.com'}. Trail statuses from #{link_to 'various sources', about_path}.
-  %script{src: '//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js'}
-  %script{src: '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'}
   - if @map
     %script{src: '//api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js'}
+  = javascript_include_tag 'application'
+  %script{src: '//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js'}
+  %script{src: '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'}

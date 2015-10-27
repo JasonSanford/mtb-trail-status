@@ -3,6 +3,6 @@ module TrailLoader
 
 private
   def load_trails
-    @trails = Trail.all
+    @trails = Trail.all.order(:status, :name)
   end
 end

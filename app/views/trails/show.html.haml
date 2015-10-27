@@ -1,1 +1,16 @@
-%h1= @trail.display_name
+.map-container
+  #map.map
+  .meta
+    .trail
+      %h2.name
+        = @trail.display_name
+        %small
+          = @trail.status
+          \-
+          %span{title: @trail.status_date}
+            = time_ago_in_words @trail.status_date
+            ago
+    .loop
+      %h2.name
+:javascript
+  mtb.trail = #{@trail.geojson.to_json};
