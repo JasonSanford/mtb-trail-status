@@ -1,0 +1,59 @@
+- name: 'Lake Norman State Park'
+  slug: 'lake-norman-state-park'
+  latitude: 35.67376
+  longitude: -80.93247
+  geojson_url: 'http://jasonsanford.github.io/mtb-trails/trails/dist/lake_norman_state_park.geojson'
+
+- name: 'Sherman Branch'
+  slug: 'sherman-branch'
+  latitude: 35.23751
+  longitude: -80.63225
+
+- name: 'Fisher Farm Park'
+  slug: 'fisher-farm-park'
+  latitude: 35.49006
+  longitude: -80.79932
+
+- name: 'Park Road Park'
+  slug: 'park-road-park'
+  latitude: 35.15022
+  longitude: -80.85008
+
+- name: 'Back Yard Trail'
+  display_name: 'Back Yard'
+  slug: 'back-yard'
+  latitude: 35.15778
+  longitude: -80.86292
+
+- name: 'Col. Francis Beatty Park'
+  display_name: 'Colonel Francis Beatty Park'
+  slug: 'colonel-francis-beatty-park'
+  latitude: 35.06248
+  longitude: -80.74494
+
+- name: 'North Mecklenburg Park'
+  slug: 'north-mecklenburg-park'
+  latitude: 35.43337
+  longitude: -80.84590
+
+- name: 'Rocky River Trail'
+  display_name: 'Rocky River'
+  slug: 'rocky-river'
+  latitude: 35.31668
+  longitude: -80.53436
+
+- name: 'Jetton Park'
+  slug: 'jetton-park'
+  latitude: 35.47649
+  longitude: -80.89985
+
+- name: 'Harrisburg Half'
+  slug: 'harrisburg-half'
+  latitude: 35.31747
+  longitude: -80.65552
+
+- name: 'Rocky Branch Trail'
+  display_name: 'Rocky Branch'
+  slug: 'rocky-branch'
+  latitude: 35.2449197
+  longitude: -81.047937

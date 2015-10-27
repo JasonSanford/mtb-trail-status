@@ -1,0 +1,6 @@
+%h1 Trails
+
+%ul
+- @trails.each do |trail|
+  %li
+    = link_to(trail.display_name, trail)
