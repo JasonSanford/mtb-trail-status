@@ -1,3 +1,43 @@
+if $('body.home.index').length > 0 or $('body.trails.index').length > 0
+  map
+  mapShown = false
+
+  $('a[data-toggle="tab"]').on('shown.bs.tab', (e) ->
+    if $(e.target).attr('href') is '#tab-map'
+      if mapShown
+        map.invalidateSize()
+      else
+        L.mapbox.accessToken = 'pk.eyJ1IjoiamNzYW5mb3JkIiwiYSI6InRJMHZPZFUifQ.F4DMGoNgU3r2AWLY0Eni-w'
+        pointGeojsonLayer = L.geoJson(mtb.trail, {
+          pointToLayer: L.mapbox.marker.style
+        })
+        map = L.mapbox.map('map', 'jcsanford.41fa2f6c', {zoomControl: false})
+        map.addLayer(pointGeojsonLayer)
+        map.setView(L.latLng(35.228082,-80.8442896), 9)
+        mapShown = true
+
+        lineGeojsonLayer = L.geoJson(null, {
+          pointToLayer: L.mapbox.marker.style,
+          onEachFeature: (feature, layer) ->
+            p = feature.properties
+            popupHtml = [
+              '<h2><a href="' + feature.properties.path + '">' + p.display_name + '</a></h2>',
+              '<h3>' + p.status + ' - ' + p.status_date_string + '</h3>'
+            ]
+            layer.bindPopup(popupHtml.join(''))
+        })
+        lineGeojsonLayer.addTo(map)
+
+        $.ajax({
+          url: '/trails.geojson'
+          success: (data) ->
+            lineGeojsonLayer.addData(data);
+            map.fitBounds(lineGeojsonLayer.getBounds())
+          error: (jqXHR, status, error) ->
+            console.log('Error fetching trail GeoJSON: ' + error)
+        });
+  )
+
 if $('body.trails.show').length > 0
   L.mapbox.accessToken = 'pk.eyJ1IjoiamNzYW5mb3JkIiwiYSI6InRJMHZPZFUifQ.F4DMGoNgU3r2AWLY0Eni-w'
   pointGeojsonLayer = L.geoJson(mtb.trail, {

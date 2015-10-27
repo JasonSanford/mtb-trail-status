@@ -4,5 +4,6 @@ class HomeController < ApplicationController
   before_action :load_trails, only: [:index]
 
   def index
+    @map = true
   end
 end
