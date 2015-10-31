@@ -10,6 +10,8 @@ class Trail < ActiveRecord::Base
 
   validates_uniqueness_of :name, :slug, :display_name
 
+  after_save :notify_subscribers
+
   def display_name
     read_attribute(:display_name) || name
   end
@@ -32,5 +34,12 @@ class Trail < ActiveRecord::Base
         'marker-symbol' => 'bicycle'
       }
     }
+  end
+
+private
+  def notify_subscribers
+    if status_changed?
+      puts 'Status did change'
+    end
   end
 end

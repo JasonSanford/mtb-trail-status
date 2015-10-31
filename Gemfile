@@ -31,6 +31,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'friendly_id'
+gem 'nokogiri'
+gem 'twitter'
 
 gem 'haml-rails', '~> 0.9'
 
