@@ -1,6 +1,21 @@
+require 'open-uri'
+
 namespace :scrape do
   desc 'Scrape Tarheel Trailblazers Website'
   task tarheel: :environment do
+    doc     = Nokogiri::HTML(open('http://www.tarheeltrailblazers.com/'))
+    doc.xpath('//strong').each do |strong|
+      open_or_closed = if strong.text =~ /open/i
+        'open'
+      elsif strong.text =~ /closed/i
+        'closed'
+      end
+      if open_or_closed
+        trail_name = strong.parent.parent.parent.parent.parent.parent.previous_element.css('b').text
+        #                     font     td     tr  table     td     tr               tr
+        puts trail_name
+      end
+    end
   end
 
   desc 'Scrape US National Whitewater Center Twitter Status'
@@ -30,8 +45,9 @@ namespace :scrape do
       else
         puts "USNWC trail status did not change."
       end
+
     else
-      puts 'The last USNWC tweet was not related to open or closed trails.'
+      puts "The last USNWC tweet was not related to open or closed trails. Tweet text was '#{last_tweet.text}'."
     end
   end
 
