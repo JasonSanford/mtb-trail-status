@@ -5,15 +5,25 @@ namespace :scrape do
   task tarheel: :environment do
     doc     = Nokogiri::HTML(open('http://www.tarheeltrailblazers.com/'))
     doc.xpath('//strong').each do |strong|
+
       open_or_closed = if strong.text =~ /open/i
         'open'
       elsif strong.text =~ /closed/i
         'closed'
       end
+
       if open_or_closed
         trail_name = strong.parent.parent.parent.parent.parent.parent.previous_element.css('b').text
         #                     font     td     tr  table     td     tr               tr
-        puts trail_name
+
+        trail = Trail.find_by_name(trail_name)
+
+        # TODO: Remove temp hack to switch back and forth
+        open_or_closed = (trail.status == 'open' ? 'closed' : 'open') if trail_name == 'Jetton Park'
+
+        if trail && trail.status != open_or_closed
+          trail.update_attribute(:status, open_or_closed)
+        end
       end
     end
   end

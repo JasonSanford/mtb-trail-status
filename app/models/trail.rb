@@ -39,7 +39,7 @@ class Trail < ActiveRecord::Base
 private
   def notify_subscribers
     if status_changed?
-      puts 'Status did change'
+      puts "Status changed from #{status_was} to #{status} for #{name}"
     end
   end
 end
