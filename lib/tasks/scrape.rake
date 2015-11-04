@@ -18,9 +18,6 @@ namespace :scrape do
 
         trail = Trail.find_by_name(trail_name)
 
-        # TODO: Remove temp hack to switch back and forth
-        open_or_closed = (trail.status == 'open' ? 'closed' : 'open') if trail_name == 'Jetton Park'
-
         if trail && trail.status != open_or_closed
           trail.update_attribute(:status, open_or_closed)
         end
@@ -51,7 +48,7 @@ namespace :scrape do
 
       if status && usnwc_trail && usnwc_trail.status != status
         puts "USNWC trail status changed from #{usnwc_trail.status} to #{status}"
-        usnwc_trail.update(status: status, status_date: last_tweet.created_at)
+        usnwc_trail.update(status: status)
       else
         puts "USNWC trail status did not change."
       end
