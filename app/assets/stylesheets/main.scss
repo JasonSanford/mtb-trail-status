@@ -218,7 +218,7 @@ body.index{
   }
 }
 
-body.registrations.new , body.sessions.new {
+body.registrations.new, body.sessions.new, body.registrations.edit, body.passwords.new, body.passwords.edit, body.confirmations.new {
   .jumbotron{
     padding: 30px 140px;
   }
