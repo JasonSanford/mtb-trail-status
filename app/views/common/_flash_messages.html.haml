@@ -1,0 +1,6 @@
+- flash.to_hash.each do |key, message|
+  .alert.flash.fade.in{class: bootstrap_alert_type(key), data: { alert: 'alert' }}
+    .container
+      %p
+        %a.close{href: '#', 'data-dismiss' => 'alert'} &times;
+        = message

@@ -27,16 +27,8 @@
   :javascript
     window.mtb = {};
   .top
-    .container
-      .header.clearfix
-        %nav
-          %ul.nav.nav-pills.pull-right
-            %li{role: 'presentation', class: 'active'}
-              = link_to 'Home', :root
-            %li{role: 'presentation'}
-              = link_to 'About', about_path
-        %h3.text-muted
-          = link_to 'MTB Trail Status', :root
+    = render 'common/navigation'
+    = render 'common/flash_messages'
   .container
   = yield
   - unless @no_footer

@@ -33,6 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'friendly_id'
 gem 'nokogiri'
 gem 'twitter'
+gem 'devise', '~> 3.4.0'
 
 gem 'haml-rails', '~> 0.9'
 
@@ -42,6 +43,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'mailcatcher'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 

@@ -1,0 +1,23 @@
+.full-panel
+  .container
+    .jumbotron
+      %h2 Sign Up
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = devise_error_messages!
+        .form-group
+          = f.label :email
+          = f.email_field :email, class: 'form-control', autofocus: true
+        .form-group
+          = f.label :phone_number
+          = f.telephone_field :phone_number, class: 'form-control'
+        .form-group
+          = f.label :password
+          - if @validatable
+            %em
+              (#{@minimum_password_length} characters minimum)
+          = f.password_field :password, class: 'form-control', autocomplete: "off"
+        .form-group
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation, class: 'form-control', autocomplete: "off"
+        = f.submit "Sign up", class: 'btn btn-success'
+      = render "devise/shared/links"

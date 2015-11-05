@@ -1,0 +1,25 @@
+.container
+  .header.clearfix
+    %nav
+      %ul.nav.nav-pills.pull-right
+        %li{role: 'presentation', class: 'active'}
+          = link_to 'Home', :root
+        %li{role: 'presentation'}
+          = link_to 'About', about_path
+        - if current_user
+          %li.dropdown
+            = link_to('http://www.google.com', class: 'dropdown-toggle', 'data-toggle' => 'dropdown', role: 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false') do
+              = current_user.email
+              %span.caret
+            %ul.dropdown-menu
+              %li{role: 'presentation'}
+                = link_to 'Settings', edit_user_registration_path
+              %li{role: 'presentation'}
+                = link_to 'Sign Out', destroy_user_session_path, method: :delete
+        - else
+          %li{role: 'presentation'}
+            = link_to 'Sign In', new_user_session_path
+          %li{role: 'presentation'}
+            = link_to 'Sign Up', new_user_registration_path
+    %h3.text-muted
+      = link_to 'MTB Trail Status', :root

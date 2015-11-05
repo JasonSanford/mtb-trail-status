@@ -9,10 +9,6 @@ body {
   background: image-url('css/pw_pattern.png') #e0e0e0;
 }
 
-body.fullscreen {
-  padding-bottom: 0;
-}
-
 .top {
   background-color: $green;
 
@@ -20,9 +16,26 @@ body.fullscreen {
     padding: 20px 0;
     color: #fff;
 
-    ul.nav li.active a {
+    ul.nav li.active a, ul.nav li a:hover {
       background-color: #fff;
       color: $green;
+    }
+
+    ul.nav li.dropdown.open {
+      background-color: #fff;
+      border-radius: 4px;
+
+      a {
+        color: $green;
+        background-color: #fff;
+        border-color: #f00;
+      }
+
+      ul.dropdown-menu {
+        a:hover {
+          background-color: #eee;
+        }
+      }
     }
 
     a { color: #fff; }
@@ -33,9 +46,16 @@ body.fullscreen {
       margin-bottom: 0;
     }
   }
-}
 
-.alert { margin: 10px 0; }
+  .alert {
+    margin: 0;
+    border-radius: 0;
+
+    p {
+      margin: 0;
+    }
+  }
+}
 
 .footer {
   color: #777;
@@ -51,7 +71,6 @@ body.fullscreen {
 }
 
 .jumbotron {
-  text-align: center;
   padding: 30px;
   background-color: $white_opacity;
   margin-bottom: 0;
@@ -60,20 +79,7 @@ body.fullscreen {
 
   h2 { margin-top: 0 }
 
-  .phone-input {
-    width: 50%;
-    margin: 0 auto;
-  }
-
-  p {
-    color: #555;
-
-    &.details {
-      font-size: 12px;
-      margin-top: 10px;
-      margin-bottom: 0;
-    }
-  }
+  p { color: #555; }
 }
 
 @media (min-width: 768px) {
@@ -198,30 +204,23 @@ table.statuses {
     h2 { font-size: 22px; }
 
     p { font-size: 16px; }
-
-    .phone-input { width: 100%; }
-
-    .input-phone {
-      padding: 10px;
-      text-align: center;
-    }
-  }
-
-  body.form {
-    .submit { text-align: center; }
   }
 }
 
-body.index .map {
-  height: 400px;
+body.index{
+  .jumbotron { text-align: center;}
+  .map {
+    height: 400px;
+
+    .leaflet-popup h2 a { color: $green; }
+
+    .leaflet-popup h3 { margin-bottom: 0; }
+  }
 }
 
-body.form {
-  .toggle { margin-right: 20px; }
-
-  .btn-success {
-    padding-left: 50px;
-    padding-right: 50px;
+body.registrations.new , body.sessions.new {
+  .jumbotron{
+    padding: 30px 140px;
   }
 }
 
@@ -230,11 +229,3 @@ body.form {
 .map .leaflet-popup h3,
 .map .leaflet-popup h4,
 .map .leaflet-popup h5 { text-align: center; }
-
-.map .leaflet-popup h2, body.index .map .leaflet-popup h3 {
-  margin-bottom: 0;
-}
-
-body.index .map .leaflet-popup h2 a {
-  color: $green;
-}
