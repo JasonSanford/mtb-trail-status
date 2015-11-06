@@ -34,6 +34,7 @@ gem 'friendly_id'
 gem 'nokogiri'
 gem 'twitter'
 gem 'devise', '~> 3.4.0'
+gem 'phony_rails'
 
 gem 'haml-rails', '~> 0.9'
 

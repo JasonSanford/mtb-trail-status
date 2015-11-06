@@ -8,6 +8,9 @@
         .form-group
           = f.label :email
           = f.email_field :email, autofocus: true, class: 'form-control'
+        .form-group
+          = f.label :phone_number
+          = f.telephone_field :phone_number, class: 'form-control'
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           %div
             Currently waiting confirmation for: #{resource.unconfirmed_email}

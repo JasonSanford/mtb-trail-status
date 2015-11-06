@@ -32,6 +32,8 @@ body {
       }
 
       ul.dropdown-menu {
+        z-index: 10000;
+
         a:hover {
           background-color: #eee;
         }
