@@ -1,6 +1,2 @@
-%h1 Trails
-
-%ul
-- @trails.each do |trail|
-  %li
-    = link_to(trail.display_name, trail)
+.container
+  = render 'common/trail_statuses'

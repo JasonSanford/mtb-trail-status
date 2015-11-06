@@ -1,0 +1,28 @@
+%h2
+  Current Trail Statuses
+  .pull-right
+    .btn-group.btn-group-sm.trail-status-tabs{role: 'group tab-list'}
+      %a.btn.btn-default.selected{href: '#tab-list', role: 'tab presentation', 'data-toggle' => 'tab'}
+        %i.glyphicon.glyphicon-list
+        View List
+      %a.btn.btn-default{href: '#tab-map', role: 'tab presentation', 'data-toggle' => 'tab'}
+        %i.glyphicon.glyphicon-map-marker
+        View Map
+.tab-content
+  .tab-pane.active{id: 'tab-list'}
+    %table.table.table-striped.statuses
+      %tbody
+        - @trails.each do |trail|
+          - glyphicon = trail.status == 'open' ? 'glyphicon-ok' : 'glyphicon-remove'
+          %tr.trail
+            %td.name
+              %h3
+                = link_to trail do
+                  %i.glyphicon{class: "#{glyphicon} #{trail.status}"}
+                  = trail.display_name
+            %td.date.text-muted
+              %span{title: "#{trail.updated_at}"}
+                = time_ago_in_words trail.updated_at
+                ago
+  .tab-pane{id: 'tab-map'}
+    #map.map

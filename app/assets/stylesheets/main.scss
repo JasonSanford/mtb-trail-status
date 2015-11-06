@@ -86,6 +86,12 @@ body {
   .container { max-width: 730px; }
 }
 
+.trail-status-tabs {
+  .selected {
+    background-color: #e6e6e6;
+  }
+}
+
 table.statuses {
   tr.trail {
     margin-bottom: 10px;

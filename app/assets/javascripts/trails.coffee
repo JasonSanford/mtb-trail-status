@@ -1,19 +1,21 @@
 if $('body.home.index').length > 0 or $('body.trails.index').length > 0
-  map
+  window.mtb.map
   mapShown = false
 
   $('a[data-toggle="tab"]').on('shown.bs.tab', (e) ->
-    if $(e.target).attr('href') is '#tab-map'
+    $target = $(e.target)
+    $target.addClass('selected').siblings('a').removeClass('selected')
+    if $target.attr('href') is '#tab-map'
       if mapShown
-        map.invalidateSize()
+        window.mtb.map.invalidateSize()
       else
         L.mapbox.accessToken = 'pk.eyJ1IjoiamNzYW5mb3JkIiwiYSI6InRJMHZPZFUifQ.F4DMGoNgU3r2AWLY0Eni-w'
         pointGeojsonLayer = L.geoJson(mtb.trail, {
           pointToLayer: L.mapbox.marker.style
         })
-        map = L.mapbox.map('map', 'jcsanford.41fa2f6c', {zoomControl: false})
-        map.addLayer(pointGeojsonLayer)
-        map.setView(L.latLng(35.228082,-80.8442896), 9)
+        window.mtb.map = L.mapbox.map('map', 'jcsanford.41fa2f6c', {zoomControl: false})
+        window.mtb.map.addLayer(pointGeojsonLayer)
+        window.mtb.map.setView(L.latLng(35.228082,-80.8442896), 9)
         mapShown = true
 
         lineGeojsonLayer = L.geoJson(null, {
@@ -26,13 +28,13 @@ if $('body.home.index').length > 0 or $('body.trails.index').length > 0
             ]
             layer.bindPopup(popupHtml.join(''))
         })
-        lineGeojsonLayer.addTo(map)
+        lineGeojsonLayer.addTo(window.mtb.map)
 
         $.ajax({
           url: '/trails.geojson'
           success: (data) ->
             lineGeojsonLayer.addData(data);
-            map.fitBounds(lineGeojsonLayer.getBounds())
+            window.mtb.map.fitBounds(lineGeojsonLayer.getBounds())
           error: (jqXHR, status, error) ->
             console.log('Error fetching trail GeoJSON: ' + error)
         });
@@ -94,7 +96,7 @@ if $('body.trails.show').length > 0
         $('.meta').find('.trail').show()
 
     $.ajax({
-      url: mtb.trail.properties.path,
+      url: mtb.trail.properties.geojson_url,
       success: (data) ->
         geojsonLayer.addData(data)
         map.fitBounds(geojsonLayer.getBounds())

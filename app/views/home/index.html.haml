@@ -1,3 +1,4 @@
+
 .full-panel
   .container
     .jumbotron
@@ -6,29 +7,4 @@
       %p Be the first to know when trails open or close. We constantly monitor trail status updates and text you as soon as your favorite trail opens or closes.
       %p= link_to('Sign Up!', new_user_registration_path, class: 'btn btn-success btn-lg')
 .container
-  %h2
-    Current Trail Statuses
-    .pull-right
-      .btn-group.btn-group-sm{role: 'group tab-list'}
-        %a.btn.btn-default{href: '#tab-list', role: 'tab presentation', 'data-toggle' => 'tab'}
-          %i.glyphicon.glyphicon-list
-        %a.btn.btn-default{href: '#tab-map', role: 'tab presentation', 'data-toggle' => 'tab'}
-          %i.glyphicon.glyphicon-map-marker
-  .tab-content
-    .tab-pane.active{id: 'tab-list'}
-      %table.table.table-striped.statuses
-        %tbody
-          - @trails.each do |trail|
-            - glyphicon = trail.status == 'open' ? 'glyphicon-ok' : 'glyphicon-remove'
-            %tr.trail
-              %td.name
-                %h3
-                  = link_to trail do
-                    %i.glyphicon{class: "#{glyphicon} #{trail.status}"}
-                    = trail.display_name
-              %td.date.text-muted
-                %span{title: "#{trail.updated_at}"}
-                  = time_ago_in_words trail.updated_at
-                  ago
-    .tab-pane{id: 'tab-map'}
-      #map.map
+  = render 'common/trail_statuses'

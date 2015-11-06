@@ -27,10 +27,11 @@ class Trail < ActiveRecord::Base
       properties: {
         name: name,
         display_name: display_name,
-        path: geojson_url,
+        path: trail_path(self),
         status: status,
         status_date_string: "#{time_ago_in_words updated_at} ago",
         has_geojson: geojson_url ? true : false,
+        geojson_url: geojson_url,
         'marker-symbol' => 'bicycle'
       }
     }
