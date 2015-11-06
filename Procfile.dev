@@ -1,2 +1,2 @@
-web: rails server
+web: rails server -b 0.0.0.0
 postgres: postgres -D /usr/local/var/postgres
