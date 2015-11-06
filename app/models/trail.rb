@@ -8,6 +8,9 @@ class Trail < ActiveRecord::Base
   SOURCE_TARHEEL_TRAILBLAZERS = 'tarheel'
   SOURCE_USNWC                = 'usnwc'
 
+  COLOR_OPEN   = '#060'
+  COLOR_CLOSED = '#900'
+
   validates_uniqueness_of :name, :slug, :display_name
 
   after_save :notify_subscribers
@@ -33,7 +36,7 @@ class Trail < ActiveRecord::Base
         has_geojson: geojson_url ? true : false,
         geojson_url: geojson_url,
         'marker-symbol' => 'bicycle',
-        'marker-color' => (status == 'open' ? '#060' : '#900')
+        'marker-color' => (status == 'open' ? COLOR_OPEN : COLOR_CLOSED)
       }
     }
   end
