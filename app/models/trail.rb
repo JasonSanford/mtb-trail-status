@@ -32,7 +32,8 @@ class Trail < ActiveRecord::Base
         status_date_string: "#{time_ago_in_words updated_at} ago",
         has_geojson: geojson_url ? true : false,
         geojson_url: geojson_url,
-        'marker-symbol' => 'bicycle'
+        'marker-symbol' => 'bicycle',
+        'marker-color' => (status == 'open' ? '#060' : '#900')
       }
     }
   end

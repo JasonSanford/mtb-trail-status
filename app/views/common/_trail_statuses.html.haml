@@ -1,13 +1,11 @@
 %h2
   Current Trail Statuses
-  .pull-right
-    .btn-group.btn-group-sm.trail-status-tabs{role: 'group tab-list'}
-      %a.btn.btn-default.selected{href: '#tab-list', role: 'tab presentation', 'data-toggle' => 'tab'}
-        %i.glyphicon.glyphicon-list
-        View List
-      %a.btn.btn-default{href: '#tab-map', role: 'tab presentation', 'data-toggle' => 'tab'}
-        %i.glyphicon.glyphicon-map-marker
-        View Map
+  .pull-right.hidden-xs
+    = render 'common/trail_status_tabs'
+
+.visible-xs{style: 'text-align: center; margin-bottom: 10px;'}
+  = render 'common/trail_status_tabs'
+
 .tab-content
   .tab-pane.active{id: 'tab-list'}
     %table.table.table-striped.statuses
