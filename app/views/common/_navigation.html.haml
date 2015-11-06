@@ -1,25 +1,32 @@
 .container
   .header.clearfix
-    %nav
-      %ul.nav.nav-pills.pull-right
-        %li{role: 'presentation', class: (@nav == 'trails' ? 'active' : '')}
-          = link_to 'Trails', trails_path
-        %li{role: 'presentation', class: (@nav == 'about' ? 'active' : '')}
-          = link_to 'About', about_path
-        - if current_user
-          %li.dropdown
-            = link_to('#', class: 'dropdown-toggle', 'data-toggle' => 'dropdown', role: 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false') do
-              = current_user.email
-              %span.caret
-            %ul.dropdown-menu
+    %nav.navbar
+      .container-fluid
+        .navbar-header
+          %button.navbar-toggle.collapsed{type: 'button', 'data-toggle' => 'collapse', 'data-target' => '#navbar-collapse', 'aria-expanded' => 'false'}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to('MTB Trail Status', :root, class: 'navbar-brand')
+        .collapse.navbar-collapse{id: 'navbar-collapse'}
+          %ul.nav.navbar-nav.nav-pills.navbar-right
+            %li{class: (@nav == 'trails' ? 'active' : '')}
+              = link_to 'Trails', trails_path
+            %li{role: 'presentation', class: (@nav == 'about' ? 'active' : '')}
+              = link_to 'About', about_path
+            - if current_user
+              %li.dropdown
+                = link_to('#', class: 'dropdown-toggle', 'data-toggle' => 'dropdown', role: 'button', 'aria-haspopup' => 'true', 'aria-expanded' => 'false') do
+                  = current_user.email
+                  %span.caret
+                %ul.dropdown-menu
+                  %li{role: 'presentation'}
+                    = link_to 'Profile', edit_profile_path
+                  %li{role: 'presentation'}
+                    = link_to 'Sign Out', destroy_user_session_path, method: :delete
+            - else
               %li{role: 'presentation'}
-                = link_to 'Profile', edit_profile_path
+                = link_to 'Sign In', new_user_session_path
               %li{role: 'presentation'}
-                = link_to 'Sign Out', destroy_user_session_path, method: :delete
-        - else
-          %li{role: 'presentation'}
-            = link_to 'Sign In', new_user_session_path
-          %li{role: 'presentation'}
-            = link_to 'Sign Up', new_user_registration_path
-    %h3.text-muted
-      = link_to 'MTB Trail Status', :root
+                = link_to 'Sign Up', new_user_registration_path

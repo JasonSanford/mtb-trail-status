@@ -16,36 +16,43 @@ body {
     padding: 20px 0;
     color: #fff;
 
-    ul.nav li.active a, ul.nav li a:hover {
-      background-color: #fff;
-      color: $green;
-    }
+    .navbar {
+      margin-bottom: 0;
 
-    ul.nav li.dropdown.open {
-      background-color: #fff;
-      border-radius: 4px;
-
-      a {
-        color: $green;
+      ul.nav li.active a, ul.nav li a:hover {
         background-color: #fff;
-        border-color: #f00;
+        color: $green;
       }
 
-      ul.dropdown-menu {
-        z-index: 10000;
+      .navbar-toggle {
+        border-color: #ddd;
+        background-color: #fff;
 
-        a:hover {
-          background-color: #eee;
+        .icon-bar {
+          background-color: #888;
         }
       }
-    }
 
-    a { color: #fff; }
+      ul.nav li.dropdown.open {
+        background-color: #fff;
+        border-radius: 4px;
 
-    h3 {
-      line-height: 40px;
-      margin-top: 0;
-      margin-bottom: 0;
+        a {
+          color: $green;
+          background-color: #fff;
+          border-color: #f00;
+        }
+
+        ul.dropdown-menu {
+          z-index: 10000;
+
+          a:hover {
+            background-color: #eee;
+          }
+        }
+      }
+
+      a { color: #fff; }
     }
   }
 
