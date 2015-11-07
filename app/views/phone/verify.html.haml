@@ -2,4 +2,11 @@
   .container
     .jumbotron.form
       %h2
-        Verify Phone Number
+        Verify #{current_user.phone_number}
+      %p
+        We just sent a text message to the phone number above. Enter the PIN you see in the text message to verify.
+      = form_tag(check_pin_path, method: 'post', class: 'form-inline') do
+        .form-group
+          = label_tag(:pin, 'Pin: ')
+          = text_field_tag(:pin, '', class: 'form-control')
+        = submit_tag('Verify', class: 'btn btn-success')

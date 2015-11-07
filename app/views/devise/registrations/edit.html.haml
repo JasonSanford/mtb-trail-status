@@ -11,7 +11,7 @@
         .form-group
           = f.label :phone_number
           = f.telephone_field :phone_number, class: 'form-control'
-        - unless current_user.phone_verified
+        - if !current_user.phone_number.blank? && !current_user.phone_verified
           .alert.alert-danger
             Your phone number has not been verified, so no trail alerts can be sent. #{link_to('Verify it now', verify_phone_path)}.
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?

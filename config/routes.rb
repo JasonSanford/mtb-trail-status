@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   get 'verify_phone' => 'phone#verify', as: 'verify_phone'
+  post 'verify_phone' => 'phone#check_pin', as: 'check_pin'
 
   get 'about' => 'about#index', as: 'about'
 

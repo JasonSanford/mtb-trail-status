@@ -7,13 +7,12 @@ class User < ActiveRecord::Base
   phony_normalize :phone_number, default_country_code: 'US'
   validates :phone_number, phony_plausible: true
 
-  before_save :set_phone_verified
+  after_save :set_phone_verified
 
 private
   def set_phone_verified
     if phone_number_changed?
-      self.phone_verified = false
-      self.phone_pin      = rand(0000..9999).to_s.rjust(4, '0')
+      self.update_column(:phone_verified, false)
     end
   end
 end
