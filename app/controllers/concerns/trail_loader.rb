@@ -3,7 +3,7 @@ module TrailLoader
 
 private
   def load_trails
-    @trails = Trail.all.order(:status, :name)
+    @trails = Trail.all.order('status DESC', :name)
   end
 
   def load_trail
