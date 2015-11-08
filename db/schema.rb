@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106043310) do
+ActiveRecord::Schema.define(version: 20151107121139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "alerts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "trail_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "trails", force: :cascade do |t|
     t.string   "name",         null: false

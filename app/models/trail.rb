@@ -15,6 +15,8 @@ class Trail < ActiveRecord::Base
 
   after_save :notify_subscribers
 
+  has_many :alerts
+
   def display_name
     read_attribute(:display_name) || name
   end

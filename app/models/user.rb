@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   after_save :set_phone_verified
 
+  has_many :alerts, dependent: :destroy
+
 private
   def set_phone_verified
     if phone_number_changed?

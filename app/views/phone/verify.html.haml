@@ -8,5 +8,5 @@
       = form_tag(check_pin_path, method: 'post', class: 'form-inline') do
         .form-group
           = label_tag(:pin, 'Pin: ')
-          = text_field_tag(:pin, '', class: 'form-control')
+          = text_field_tag(:pin, '', autofocus: true, class: 'form-control')
         = submit_tag('Verify', class: 'btn btn-success')

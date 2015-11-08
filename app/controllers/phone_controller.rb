@@ -1,4 +1,6 @@
 class PhoneController < ApplicationController
+  include PhoneVerification
+
   before_action :authenticate_user!
   before_action :redirect_blank_phone_number
   before_action :redirect_already_verified
@@ -30,13 +32,5 @@ private
       to: current_user.phone_number,
       body: "Hi there! This is MTB Trail Status verifying your phone number. Your PIN is #{current_user.phone_pin}."
     )
-  end
-
-  def redirect_blank_phone_number
-    redirect_to(edit_profile_path) if current_user.phone_number.blank?
-  end
-
-  def redirect_already_verified
-    redirect_to(edit_profile_path) if current_user.phone_verified
   end
 end
