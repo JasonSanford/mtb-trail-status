@@ -1,1 +1,15 @@
-%h2 Setup Your Trail Alerts
+.full-panel
+  .container
+    .jumbotron.form
+      %h2 Setup Your Trail Alerts
+
+      = form_tag(alerts_path, method: 'post', class: 'form-horizontal') do
+        - @trails.each do |trail|
+          .form-group
+            .checkbox
+              %label
+                = check_box_tag('trail[ids][]', trail.id, @current_alert_trails.include?(trail), 'data-toggle' => 'toggle', 'data-size' => 'small')
+                = trail.name
+        %hr
+        .form-group
+          = submit_tag('Save', class: 'btn btn-success')
