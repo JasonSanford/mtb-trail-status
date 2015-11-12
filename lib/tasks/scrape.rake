@@ -47,7 +47,8 @@ namespace :scrape do
     if status
       usnwc_trail = Trail.find_by_name('USNWC Trails')
 
-      status = usnwc_trail.status == 'open' ? 'closed' : 'open'
+      # Uncomment to always change status to debug
+      #status = usnwc_trail.status == 'open' ? 'closed' : 'open'
 
       if status && usnwc_trail && usnwc_trail.status != status
         puts "USNWC trail status changed from #{usnwc_trail.status} to #{status}"
