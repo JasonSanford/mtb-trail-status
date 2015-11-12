@@ -43,10 +43,27 @@ class Trail < ActiveRecord::Base
     }
   end
 
+  def url
+    "http://mtbtrailstat.us/trails/#{slug}"
+  end
+
 private
   def notify_subscribers
     if status_changed?
-      puts "Status changed from #{status_was} to #{status} for #{name}"
+      alerts.each do |alert|
+        user  = alert.user
+        trail = alert.trail
+
+        message = "#{trail.name} is now #{trail.status}. #{trail.url}"
+
+        puts "Sending message to user id #{user.id} (#{user.phone_number}): '#{message}'"
+
+        $twilio_client.messages.create(
+          from: $twilio_phone_number,
+          to:   user.phone_number,
+          body: message
+        )
+      end
     end
   end
 end

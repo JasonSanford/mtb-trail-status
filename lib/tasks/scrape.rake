@@ -19,6 +19,7 @@ namespace :scrape do
         trail = Trail.find_by_name(trail_name)
 
         if trail && trail.status != open_or_closed
+          puts "#{trail.name} status changed from #{trail.status} to #{open_or_closed}"
           trail.update_attribute(:status, open_or_closed)
         end
       end
@@ -45,6 +46,8 @@ namespace :scrape do
 
     if status
       usnwc_trail = Trail.find_by_name('USNWC Trails')
+
+      status = usnwc_trail.status == 'open' ? 'closed' : 'open'
 
       if status && usnwc_trail && usnwc_trail.status != status
         puts "USNWC trail status changed from #{usnwc_trail.status} to #{status}"
