@@ -43,3 +43,5 @@
   %script{src: '//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'}
   - if @toggle
     %script{src: '//gitcdn.github.io/bootstrap-toggle/2.2.0/js/bootstrap-toggle.min.js'}
+  - if @stripejs
+    = render 'common/stripe'

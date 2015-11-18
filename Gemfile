@@ -36,6 +36,7 @@ gem 'twitter'
 gem 'devise', '~> 3.4.0'
 gem 'phony_rails'
 gem 'twilio-ruby'
+gem 'stripe'
 
 gem 'haml-rails', '~> 0.9'
 

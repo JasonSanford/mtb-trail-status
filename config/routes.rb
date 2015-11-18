@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   devise_scope :user do
-    get 'profile' => 'devise/registrations#edit', as: 'edit_profile'
+    get 'settings' => 'devise/registrations#edit', as: 'edit_settings'
   end
 
   get 'verify_phone' => 'phone#verify', as: 'verify_phone'
@@ -14,4 +14,5 @@ Rails.application.routes.draw do
 
   resources :trails
   resources :alerts
+  resource :subscriptions, as: :subscription
 end

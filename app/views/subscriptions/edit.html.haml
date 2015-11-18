@@ -1,0 +1,18 @@
+.container
+  %h2
+    - if @current_subscription.canceled?
+      Start Your Subscription
+    - else
+      Change Your Subscription
+  .alert.alert-info
+    - if @current_subscription && @current_subscription.active? && @current_subscription.canceled?
+      You have a canceled #{@current_subscription.plan.name} subscription that is still active until #{@current_subscription.term_end_date}.
+    - else
+      You currently have a recurring #{@current_subscription.plan.name} subscription.
+  = render 'new_or_edit'
+  - unless @current_subscription.canceled?
+    %hr
+    %h2 Cancel Your Subscription
+    %p We're sad to see you go, but we understand. Click below to cancel your current subscription. You will not be billed again, and you'll continue to receive text alerts until your current subscription period ends on #{@current_subscription.term_end_date}.
+    %p.text-centered
+      = link_to 'Cancel Subscription', subscription_path, method: :delete, 'data-confirm' => 'Are you sure you want to cancel your subscription?', class: 'btn btn-danger cancel'

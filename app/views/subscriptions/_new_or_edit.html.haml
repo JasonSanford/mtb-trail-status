@@ -1,0 +1,64 @@
+:javascript
+  window.mtb.plans = {};
+.plans
+  - @plans.each do |plan|
+    .plan
+      .plan-inner{class: plan.stripe_id}
+        %h3= plan.name
+        - if plan.name == 'Monthly'
+          %p Auto-renews every month. Cancel any time.
+        - else
+          %p Annual subscription. Auto-renews after one year.
+        .price
+          %h2
+            $#{plan.price_in_cents / 100}
+            :javascript
+              window.mtb.plans["#{plan.stripe_id}"] = {name: "#{plan.name}", price_in_cents: parseInt("#{plan.price_in_cents}")};
+          %p.per-term per #{plan.name == 'Monthly' ? 'month' : 'year'}
+        .action
+          - if @current_subscription && @current_subscription.plan == plan && !@current_subscription.canceled?
+            = link_to 'Current Plan', 'javascript:void(0);', class: 'btn btn-default'
+          - else
+            = link_to "Choose #{plan.name}", "##{plan.name}", class: 'btn btn-primary select-plan', 'data-plan' => plan.stripe_id
+  .clearfix
+.summary
+  %p.summary-text
+  - if @current_subscription && @current_subscription.card_info
+    = form_tag(subscription_path, method: :put, class: 'form-horizontal subscription-form update-subscription-form') do
+      .alert.alert-danger.card-errors
+      = hidden_field_tag('plan')
+      %p
+        We'll charge the card you have on file, a
+        %strong #{@current_subscription.card_info['brand']}
+        ending in
+        %span
+          %strong> #{@current_subscription.card_info['last_4']}
+          \.
+      .form-group
+        %p.text-centered
+          - submit_text = @current_subscription.canceled? ? 'Purchase' : 'Change Subscription'
+          = submit_tag(submit_text, class: 'btn btn-success submit')
+  - else
+    = form_tag(subscription_path, class: 'form-horizontal subscription-form new-subscription-form') do
+      .alert.alert-danger.card-errors
+      = hidden_field_tag('plan')
+      .form-group
+        = label_tag('', 'Card #', class: 'col-sm-3 control-label')
+        .col-sm-9
+          %input{type: 'text', class: 'form-control card-number', 'data-stripe' => 'number', required: 'yup'}
+      .form-group
+        = label_tag('', 'Expiration', class: 'col-sm-3 control-label')
+        .col-sm-9
+          = select_month(Date.today,
+                         {field_name: 'exp_month'},
+                         {class: 'form-control card-month', 'data-stripe' => 'exp-month'})
+          = select_year(Date.today,
+                        {field_name: 'exp_year', start_year: Date.today.year, end_year: (Date.today + 10.years).year},
+                        {class: 'form-control card-year', 'data-stripe' => 'exp-year'})
+      .form-group
+        = label_tag('', 'CVC', class: 'col-sm-3 control-label', required: 'yup')
+        .col-sm-9
+          %input{type: 'text', class: 'form-control card-cvc', 'data-stripe' => 'cvc', size: '4'}
+      .form-group
+        .col-sm-offset-3.col-sm-9
+          = submit_tag('Purchase', class: 'btn btn-success submit')

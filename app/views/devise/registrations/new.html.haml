@@ -3,7 +3,12 @@
     .jumbotron.form
       %h2 Sign Up
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        = devise_error_messages!
+        - if resource.errors.any?
+          .alert.alert-danger
+            There was a problem creating your account.
+            %ul
+              - resource.errors.full_messages.each do |message|
+                %li= message
         .form-group
           = f.label :email
           = f.email_field :email, class: 'form-control', autofocus: true

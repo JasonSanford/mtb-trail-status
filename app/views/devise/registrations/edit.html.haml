@@ -2,9 +2,34 @@
   .container
     .jumbotron.form
       %h2
+        My Subscription
+      - if current_user.is_free?
+        %p Boom! Looks like you scored a free account. You won't need a subscription.
+      - elsif current_user.subscription
+        - sub = current_user.subscription
+        - if !sub.canceled?
+          %p You've got an active #{sub.plan.name} subscription.
+          %p To change or cancel your subscription head over to the #{link_to 'subscription page', edit_subscription_path}.
+        - elsif sub.canceled? && sub.active?
+          %p You've got a canceled #{sub.plan.name} subscription that's still active until #{sub.term_end_date}.
+          %p To start your subscription again head over to the #{link_to 'subscription page', edit_subscription_path}.
+        - else
+          %p You canceled a #{sub.plan.name} subscription that ended on #{sub.term_end_date}.
+          %p To start your subscription again head over to the #{link_to 'subscription page', edit_subscription_path}.
+      - else
+        %p It looks like you don't have a subscription. #{link_to 'Start one', new_subscription_path} now to start receiving text messages when your favorite trails open or close.
+
+      %hr
+
+      %h2
         Update Profile
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-        = devise_error_messages!
+        - if resource.errors.any?
+          .alert.alert-danger
+            There was a problem updating your account.
+            %ul
+              - resource.errors.full_messages.each do |message|
+                %li= message
         .form-group
           = f.label :email
           = f.email_field :email, autofocus: true, class: 'form-control'
@@ -12,7 +37,7 @@
           = f.label :phone_number
           = f.telephone_field :phone_number, class: 'form-control'
         - if !current_user.phone_number.blank? && !current_user.phone_verified
-          .alert.alert-danger
+          .alert.alert-warning
             Your phone number has not been verified, so no trail alerts can be sent. #{link_to('Verify it now', verify_phone_path)}.
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           %div
@@ -22,7 +47,9 @@
           %i (needed to confirm your changes)
           = f.password_field :current_password, autocomplete: 'off', class: 'form-control'
         = f.submit 'Update', class: 'btn btn-success'
+
       %hr
+
       %h2
         Change Password
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
@@ -37,8 +64,9 @@
           = f.label :current_password
           = f.password_field :current_password, autocomplete: 'off', class: 'form-control'
         = f.submit 'Change My Password', class: 'btn btn-success'
+
       %hr
 
-      %h3 Cancel my account
+      %h2 Cancel my account
       %p
         Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger'}

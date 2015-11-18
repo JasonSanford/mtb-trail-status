@@ -1,0 +1,106 @@
+$light_green: #E8EBE8;
+
+body.subscriptions {
+  &.edit {
+    a.cancel {
+      margin-top: 20px;
+    }
+  }
+
+  .plans {
+
+    .plan {
+      float: left;
+      width: 50%;
+
+      .plan-inner {
+        text-align: center;
+        background-color: white;
+        border: 1px solid #d9d9d9;
+        border-radius: 8px;
+        padding: 10px 0;
+
+        &.monthly {
+          margin-right: 10px;
+        }
+
+        &.annual {
+          margin-left: 10px;
+        }
+
+        &.selected {
+          border-bottom-right-radius: 0;
+          border-bottom-left-radius: 0;
+          border-bottom: none;
+          background-color: $light_green;
+          padding-bottom: 30px;
+        }
+
+        .price {
+          h2 {
+            margin-bottom: 0;
+          }
+
+          .per-term {
+            color: #9e9e9e;
+          }
+        }
+
+        .action {
+          margin: 20px 0;
+        }
+      }
+    }
+  }
+
+  .summary {
+    display: none;
+    padding: 20px;
+    background-color: $light_green;
+    border: 1px solid #d9dce3;
+    margin-top: -1px;
+    border-radius: 8px;
+
+    .summary-text {
+      margin: 10px 0 25px 0;
+    }
+
+    &.monthly {
+      border-top-left-radius: 0;
+    }
+
+    &.annual {
+      border-top-right-radius: 0;
+    }
+
+    form {
+      .card-errors {
+        display: none;
+      }
+
+      p {
+        margin-top: 20px;
+      }
+    }
+
+    .new-subscription-form {
+      width: 50%;
+      margin: 0 auto;
+
+      .card-month, .card-year {
+        width: 49%;
+        display: inline;
+      }
+
+      .card-cvc {
+        width: 75px;
+      }
+    }
+
+    @media only screen and (min-width: 320px) and (max-width: 600px) {
+      .new-subscription-form {
+        width: 100%;
+      }
+    }
+  }
+}

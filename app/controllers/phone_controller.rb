@@ -14,7 +14,7 @@ class PhoneController < ApplicationController
     if params[:pin] == current_user.phone_pin
       flash[:success] = 'You successfully verified your phone number!'
       current_user.update_attribute('phone_verified', true)
-      redirect_to(edit_profile_path)
+      redirect_to(edit_settings_path)
     else
       flash[:error] = 'The PIN you entered did not match the PIN we sent. Try again.'
       render :verify

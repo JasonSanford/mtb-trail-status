@@ -13,3 +13,10 @@ usnwc_trails.each do |trail_obj|
   trail.save!
 end
 puts "Created #{usnwc_trails.count} USNWC trails."
+
+plans = YAML::load_file(Rails.root.join('db', 'seeds', 'plans.yml'))
+plans.each do |plan_obj|
+  plan = Plan.new(plan_obj)
+  plan.save!
+end
+puts "Created #{plans.count} plans."

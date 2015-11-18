@@ -9,6 +9,14 @@ body {
   background: image-url('css/pw_pattern.png') #e0e0e0;
 }
 
+hr {
+  border-top: 1px solid #e5e5e5;
+}
+
+p.text-centered {
+  text-align: center;
+}
+
 .top {
   background-color: $green;
 
@@ -72,6 +80,7 @@ body {
 }
 
 .footer {
+  margin-top: 20px;
   color: #777;
   padding-top: 19px;
   border-top: 1px solid #e5e5e5;
@@ -92,8 +101,6 @@ body {
   h1 { font-size: 55px; }
 
   h2 { margin-top: 0 }
-
-  p { color: #555; }
 }
 
 @media (min-width: 768px) {
@@ -232,13 +239,28 @@ table.statuses {
 }
 
 body.home.index {
-  .jumbotron { text-align: center;}
+  .jumbotron {
+    text-align: center;
+
+    p { color: #555; }
+  }
+}
+
+body.home.index, body.trails.index {
   .map {
     height: 400px;
 
     .leaflet-popup h2 a { color: $green; }
 
     .leaflet-popup h3 { margin-bottom: 0; }
+  }
+}
+
+body.registrations.edit {
+  .jumbotron {
+    p {
+      font-size: 1.1em;
+    }
   }
 }
 

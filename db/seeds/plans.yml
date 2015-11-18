@@ -1,0 +1,7 @@
+- name: 'Monthly'
+  price_in_cents: 300
+  stripe_id: 'monthly'
+
+- name: 'Annual'
+  price_in_cents: 2900
+  stripe_id: 'annual'
