@@ -65,9 +65,14 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { host: 'mtbtrailstat.us' }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { host: 'smtp.mandrillapp.com', port: 587,
-                                        password: ENV['MANDRILL_API_TOKEN'],
-                                        user_name: 'jasonsanford@gmail.com'}
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.mandrillapp.com',
+    port: '587',
+    password: ENV['MANDRILL_API_TOKEN'],
+    user_name: 'jasonsanford@gmail.com',
+    domain: 'heroku.com',
+    authentication: :plain
+  }
   config.action_mailer.asset_host = 'http://mtbtrailstat.us'
   config.action_mailer.raise_delivery_errors = false
 
