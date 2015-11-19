@@ -37,7 +37,7 @@ gem 'devise', '~> 3.4.0'
 gem 'phony_rails'
 gem 'twilio-ruby'
 gem 'stripe'
-
+gem 'rollbar', '~> 2.4.0'
 gem 'haml-rails', '~> 0.9'
 
 group :development, :test do

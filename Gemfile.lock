@@ -171,6 +171,8 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    rollbar (2.4.0)
+      multi_json
     ruby_parser (3.7.1)
       sexp_processor (~> 4.1)
     sass (3.4.18)
@@ -258,6 +260,7 @@ DEPENDENCIES
   pg
   phony_rails
   rails (= 4.2.4)
+  rollbar (~> 2.4.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
