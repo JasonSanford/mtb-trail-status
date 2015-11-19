@@ -133,6 +133,7 @@ GEM
     phony_rails (0.12.10)
       activesupport (>= 3.0)
       phony (~> 2.12)
+    puma (2.15.3)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -264,6 +265,7 @@ DEPENDENCIES
   nokogiri
   pg
   phony_rails
+  puma
   rails (= 4.2.4)
   rails_12factor
   rollbar (~> 2.4.0)

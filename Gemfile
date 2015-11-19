@@ -48,6 +48,7 @@ end
 
 group :staging, :production do
   gem 'rails_12factor'
+  gem 'puma'
 end
 
 group :development do
