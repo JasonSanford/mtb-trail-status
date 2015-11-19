@@ -46,6 +46,10 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
+group :staging, :production do
+  gem 'rails_12factor'
+end
+
 group :development do
   gem 'mailcatcher'
   # Access an IRB console on exception pages or by using <%= console %> in views
