@@ -1,7 +1,61 @@
 !!! 5
 %html{lang: 'en'}
   %head
+    = stylesheet_link_tag '//fonts.googleapis.com/css?family=Titillium+Web:400,700', media: 'all'
+    %meta{content: 'width=device-width, initial-scale=1, maximum-scale=1', name: :viewport}/
+    :scss
+      $green: #5CB85C;
+      $dark_blue: #37728B;
+      $links: $dark_blue;
+      body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #555;
+        line-height: 24px;
+        background: #fff url(#{image_url('css/pw_pattern.png')}) top center repeat;
+
+        div.wrapper {
+          width: 90%;
+          max-width: 640px;
+          margin: 30px auto;
+        }
+
+        div.mail-banner {
+          float: left;
+          width: 100%;
+          background-color: $green;
+          border-top-right-radius: 5px;
+          border-top-left-radius: 5px;
+
+          div.mail-banner-inner {
+            padding: 15px;
+          }
+
+          a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 22px;
+            font-family: 'Titillium Web', sans-serif;
+          }
+        }
+
+        div.mail-content {
+          clear: both;
+          padding: 5px 25px;
+          background: #fff;
+          border-bottom-right-radius: 5px;
+          border-bottom-left-radius: 5px;
+
+          a {
+            color: $links;
+          }
+        }
+      }
+
   %body
-    .top{style: 'background-color: #5CB85C;'}
-      %h2{style: 'color: #fff;'} MTB Trail Status
-    = yield
+    .wrapper
+      .mail-banner
+        .mail-banner-inner
+          = link_to 'MTB Trail Status', root_url, class: :logo
+
+      .mail-content
+        = yield
