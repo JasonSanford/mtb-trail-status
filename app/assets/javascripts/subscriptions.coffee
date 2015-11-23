@@ -19,6 +19,9 @@ class PlanSummary
 
   show: ->
     @$element.show()
+    $('html, body').animate({
+      scrollTop: @$element.offset().top
+    }, 500);
 
 if $('body.subscriptions.new').length > 0 or $('body.subscriptions.edit').length > 0 or $('body.subscriptions.create').length > 0
   planSummary = new PlanSummary($('.summary'))

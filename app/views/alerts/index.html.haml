@@ -3,13 +3,23 @@
     .jumbotron.form
       %h2 Setup Your Trail Alerts
 
+      - sms_disabled = !current_user.can_receive_texts?
+      - if sms_disabled
+        .alert.alert-info #{link_to 'Add a subscription', new_subscription_path, class: 'add'} to enable SMS alerts.
+
       = form_tag(alerts_path, method: 'post', class: 'form-horizontal') do
-        - @trails.each do |trail|
-          .form-group
-            .checkbox
-              %label
-                = check_box_tag('trail[ids][]', trail.id, @current_alert_trails.include?(trail), 'data-toggle' => 'toggle', 'data-size' => 'small')
-                = trail.name
-        %hr
-        .form-group
-          = submit_tag('Save', class: 'btn btn-success')
+        %table.table
+          %thead
+            %tr
+              %th
+              %th SMS
+              %th Email
+          %tbody
+            - @trails.each do |trail|
+              %tr
+                %td= trail.name
+                %td.input= check_box_tag('trail_sms[ids][]',   trail.id, @current_sms_alert_trails.include?(trail), disabled: sms_disabled)
+                %td.input= check_box_tag('trail_email[ids][]', trail.id, @current_email_alert_trails.include?(trail))
+          %tfoot
+            %tr
+              %td{colspan: '3'}= submit_tag('Save', class: 'btn btn-success save')

@@ -12,5 +12,6 @@
  *
  *= require main
  *= require subscriptions
+ *= require alerts
  *= require_self
  */

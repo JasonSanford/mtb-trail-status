@@ -1,0 +1,36 @@
+body.alerts.index {
+  .alert {
+    .add {
+      font-weight: bold;
+    }
+  }
+
+  table {
+    th {
+      text-align: center;
+      border-bottom: 2px solid #999;
+    }
+
+
+    tbody {
+      td {
+        border-top: 1px solid #999;
+
+        &.input {
+          text-align: center;
+        }
+      }
+    }
+
+    tfoot {
+      td {
+        border-top: 2px solid #999;
+        text-align: center
+      }
+
+      .save {
+        padding: 6px 35px;
+      }
+    }
+  }
+}

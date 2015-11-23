@@ -25,7 +25,7 @@
                 %ul.dropdown-menu
                   %li{role: 'presentation'}
                     = link_to 'Settings', edit_settings_path
-                  - unless current_user.is_free?
+                  - unless current_user.is_comped?
                     - if current_user.subscription
                       %li{role: 'presentation'}
                         - link_text = current_user.subscription.canceled? ? 'Add Subscription' : 'Edit Subscription'

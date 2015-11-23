@@ -1,9 +1,5 @@
 .container
-  %h2
-    - if @current_subscription.canceled?
-      Start Your Subscription
-    - else
-      Change Your Subscription
+  %h2 Change Your Subscription
   .alert.alert-info
     - if @current_subscription && @current_subscription.active? && @current_subscription.canceled?
       You have a canceled #{@current_subscription.plan.name} subscription that is still active until #{@current_subscription.term_end_date}.

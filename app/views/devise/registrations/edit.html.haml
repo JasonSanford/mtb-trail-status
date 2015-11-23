@@ -3,7 +3,7 @@
     .jumbotron.form
       %h2
         My Subscription
-      - if current_user.is_free?
+      - if current_user.is_comped?
         %p Boom! Looks like you scored a free account. You won't need a subscription.
       - elsif current_user.subscription
         - sub = current_user.subscription

@@ -54,18 +54,25 @@ private
         user  = alert.user
         trail = alert.trail
 
-        if user.can_receive_texts?
-          message = "#{trail.name} is now #{trail.status}. #{trail.url}"
+        if alert.sms?
+          if user.can_receive_texts?
+            message = "#{trail.name} is now #{trail.status}. #{trail.url}"
 
-          puts "Sending message to user id #{user.id} (#{user.phone_number}): '#{message}'"
+            puts "Sending message to user id #{user.id} (#{user.phone_number}): '#{message}'"
 
-          $twilio_client.messages.create(
-            from: $twilio_phone_number,
-            to:   user.phone_number,
-            body: message
-          )
-        else
-          puts "User id #{user.id} will not be sent text message for #{trail.name} because: ", user.reasons_for_not_receiving_texts
+            $twilio_client.messages.create(
+              from: $twilio_phone_number,
+              to:   user.phone_number,
+              body: message
+            )
+          else
+            puts "User id #{user.id} will not be sent text message for #{trail.name} because: ", user.reasons_for_not_receiving_texts
+          end
+        end
+
+        if alert.email?
+          puts "Sending email to user id #{user.id} (#{user.email}): #{trail.name} - #{trail.status}"
+          AlertMailer.trail_alert(alert).deliver
         end
       end
     end

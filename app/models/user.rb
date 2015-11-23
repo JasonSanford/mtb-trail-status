@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
 
   def can_receive_texts?
     if phone_verified?
-      if is_free?
+      if is_comped?
         true
       else
         subscription && subscription.active?

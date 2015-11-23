@@ -10,8 +10,9 @@ body.subscriptions {
   .plans {
 
     .plan {
-      float: left;
-      width: 50%;
+      padding-left: 0;
+      padding-right: 0;
+      margin-bottom: 15px;
 
       .plan-inner {
         text-align: center;
@@ -20,20 +21,13 @@ body.subscriptions {
         border-radius: 8px;
         padding: 10px 0;
 
-        &.monthly {
+
+        &.monthly, &.free {
           margin-right: 10px;
         }
 
-        &.annual {
-          margin-left: 10px;
-        }
-
         &.selected {
-          border-bottom-right-radius: 0;
-          border-bottom-left-radius: 0;
-          border-bottom: none;
           background-color: $light_green;
-          padding-bottom: 30px;
         }
 
         .price {
@@ -63,14 +57,6 @@ body.subscriptions {
 
     .summary-text {
       margin: 10px 0 25px 0;
-    }
-
-    &.monthly {
-      border-top-left-radius: 0;
-    }
-
-    &.annual {
-      border-top-right-radius: 0;
     }
 
     form {
