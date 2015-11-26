@@ -56,7 +56,8 @@ private
 
         if alert.sms?
           if user.can_receive_texts?
-            message = "#{trail.name} is now #{trail.status}. #{trail.url}"
+            is_or_are = trail.name.ends_with?('Trails') ? 'are' : 'is'
+            message   = "#{trail.name} #{is_or_are} now #{trail.status}. #{trail.url}"
 
             puts "Sending message to user id #{user.id} (#{user.phone_number}): '#{message}'"
 

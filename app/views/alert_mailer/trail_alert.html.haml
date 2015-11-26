@@ -1,3 +1,6 @@
-%p #{@alert.trail.name} is now #{@alert.trail.status}.
+- is_or_are = @alert.trail.name.ends_with?('Trails') ? 'are' : 'is'
 
-%p= link_to @alert.trail.name, @alert.trail
+%p #{link_to @alert.trail.name, @alert.trail} #{is_or_are} now #{@alert.trail.status}.
+
+.footer
+  %p.unsubscribe To stop receiving emails like this, change your #{link_to 'alert settings', alerts_url}.
