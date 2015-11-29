@@ -8,6 +8,9 @@ class HomeController < ApplicationController
     @map = true
   end
 
+  def oops
+  end
+
 private
   def redirect_authenticated
     redirect_to(trails_path) if current_user

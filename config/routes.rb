@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'home#index'
 
+  get 'oops' => 'home#oops'
+
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   devise_scope :user do
