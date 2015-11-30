@@ -5,7 +5,10 @@
 
       - sms_disabled = !current_user.can_receive_texts?
       - if sms_disabled
-        .alert.alert-info #{link_to 'Add a subscription', new_subscription_path, class: 'add'} to enable SMS alerts.
+        - if !current_user.phone_verified?
+          .alert.alert-info #{link_to 'Verify your phone number', verify_phone_path, class: 'add'} to enable SMS alerts.
+        - else
+          .alert.alert-info #{link_to 'Add a subscription', new_subscription_path, class: 'add'} to enable SMS alerts.
 
       = form_tag(alerts_path, method: 'post', class: 'form-horizontal') do
         %table.table

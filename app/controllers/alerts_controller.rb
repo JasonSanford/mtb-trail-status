@@ -1,10 +1,7 @@
 class AlertsController < ApplicationController
-  include PhoneVerification
   include TrailLoader
 
   before_action :authenticate_user!
-  before_action :redirect_blank_phone_number
-  before_action :redirect_not_verified
   before_action :load_trails, only: [:index]
 
   def index
