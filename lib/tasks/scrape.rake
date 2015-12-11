@@ -3,6 +3,12 @@ require 'open-uri'
 namespace :scrape do
   desc 'Scrape Tarheel Trailblazers Website'
   task tarheel: :environment do
+
+    # Keep a list of trails we've processed. Trailblazers website maintainers
+    # sometimes don't remove the old status, resulting in duplicate notifications.
+    # The first instance of each trail name in the list wins.
+    processed_trail_names = []
+
     doc     = Nokogiri::HTML(open('http://www.tarheeltrailblazers.com/'))
     doc.xpath('//strong').each do |strong|
 
@@ -18,11 +24,13 @@ namespace :scrape do
 
         trail = Trail.find_by_name(trail_name)
 
-        if trail && trail.status != open_or_closed
+        if trail && trail.status != open_or_closed && !processed_trail_names.include?(trail_name)
           puts "#{trail.name} status changed from #{trail.status} to #{open_or_closed}"
           trail.update_attribute(:status, open_or_closed)
         end
       end
+
+      processed_trail_names << trail_name
     end
   end
 
