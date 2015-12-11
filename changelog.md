@@ -1,3 +1,8 @@
+## v1.1.3 - December 11, 2015
+
+* Fix bug where duplicate alerts were sent if trail was listed twice at trailblazers website
+* Fix header height issue on trail show page
+
 ## v1.1.2 - December 1, 2015
 
 * Use https for open graph url
