@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   get 'about' => 'about#index', as: 'about'
 
+  get 'billing' => 'billing#index', as: 'billing'
+
   resources :trails
   resources :alerts
   resource :subscriptions, as: :subscription

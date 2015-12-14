@@ -5,6 +5,7 @@
       You have a canceled #{@current_subscription.plan.name} subscription that is still active until #{@current_subscription.term_end_date}.
     - else
       You currently have a recurring #{@current_subscription.plan.name} subscription.
+    View #{link_to 'detailed billing', billing_path} info.
   = render 'new_or_edit'
   - unless @current_subscription.canceled?
     %hr

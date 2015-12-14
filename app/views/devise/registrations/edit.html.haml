@@ -16,6 +16,7 @@
         - else
           %p You canceled a #{sub.plan.name} subscription that ended on #{sub.term_end_date}.
           %p To start your subscription again head over to the #{link_to 'subscription page', edit_subscription_path}.
+        %p View #{link_to 'detailed billing', billing_path} info.
       - else
         %p It looks like you don't have a subscription. #{link_to 'Start one', new_subscription_path} now to start receiving text messages when your favorite trails open or close.
 

@@ -1,0 +1,42 @@
+.container
+  %h3 Upcoming Invoices
+  - if @upcoming_invoice
+    - line = @upcoming_invoice.lines.data[0]
+    %table.table.table-striped
+      %thead
+        %th Charge Date
+        %th Description
+        %th Subscription Period
+        %th Amount
+      %tbody
+        %tr
+          %td= Time.at(@upcoming_invoice.date).to_datetime.strftime("%B %d, %Y")
+          %td= line.plan.statement_descriptor
+          %td #{Time.at(line.period.start).to_datetime.strftime("%m/%d/%Y")} - #{Time.at(line.period.end).to_datetime.strftime("%m/%d/%Y")}
+          %td= Money.us_dollar(@upcoming_invoice.total).format
+  - else
+    None
+
+  %hr
+
+  %h3 Past Invoices
+  - if @invoices.any?
+    %table.table.table-striped
+      %thead
+        %th Charge Date
+        %th Description
+        %th Subscription Period
+        %th Amount
+        %th Paid?
+      %tbody
+        - @invoices.each do |invoice|
+          - line = invoice.lines.data[0]
+          %tr
+            %td= Time.at(invoice.date).to_datetime.strftime("%B %d, %Y")
+            %td= line.plan.statement_descriptor
+            %td #{Time.at(line.period.start).to_datetime.strftime("%m/%d/%Y")} - #{Time.at(line.period.end).to_datetime.strftime("%m/%d/%Y")}
+            %td= Money.us_dollar(invoice.total).format
+            %td
+              %i.glyphicon{class: 'glyphicon-' + (invoice.paid ? 'ok' : 'remove')}
+  - else
+    None

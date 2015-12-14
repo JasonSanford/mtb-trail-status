@@ -30,6 +30,8 @@
                       %li{role: 'presentation'}
                         - link_text = current_user.subscription.canceled? ? 'Add Subscription' : 'Edit Subscription'
                         = link_to link_text, edit_subscription_path
+                      %li{role: 'presentation'}
+                        = link_to 'Billing', billing_path
                     - else
                       %li{role: 'presentation'}
                         = link_to 'Add Subscription', new_subscription_path
