@@ -1,3 +1,8 @@
+## v1.2.0 - December 14, 2015
+
+* Add basic billing page with past and future invoices
+* Disable Rollbar in development
+
 ## v1.1.3 - December 11, 2015
 
 * Fix bug where duplicate alerts were sent if trail was listed twice at trailblazers website
