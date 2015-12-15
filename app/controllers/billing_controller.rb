@@ -7,7 +7,12 @@ class BillingController < ApplicationController
     @invoices = @stripe_customer.invoices
 
     if @stripe_customer
-      @upcoming_invoice = Stripe::Invoice.upcoming(customer: current_user.subscription.stripe_customer_id)
+      @upcoming_invoice =
+        begin
+          Stripe::Invoice.upcoming(customer: current_user.subscription.stripe_customer_id)
+        rescue Stripe::InvalidRequestError
+          nil
+        end
     end
   end
 

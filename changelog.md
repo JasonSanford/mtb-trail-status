@@ -1,3 +1,7 @@
+## v1.2.1 - December 14, 2015
+
+* Fix bug where billing page errors if there are no upcoming invoices (canceled subscription)
+
 ## v1.2.0 - December 14, 2015
 
 * Add basic billing page with past and future invoices
