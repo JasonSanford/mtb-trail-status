@@ -46,9 +46,9 @@ namespace :scrape do
     last_tweet = client.user_timeline('usnwctrails', count: 1, include_rts: false, exclude_replies: true).first
 
     status = case last_tweet.text
-      when /are open/i
+      when /are open|is open/i
         'open'
-      when /are closed/i
+      when /are closed|is closed/i
         'closed'
     end
 
