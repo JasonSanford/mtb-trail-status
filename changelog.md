@@ -1,3 +1,7 @@
+## v1.2.2 - December 21, 2015
+
+* Allow "is open" or "is closed" for changing status for usnwc
+
 ## v1.2.1 - December 14, 2015
 
 * Fix bug where billing page errors if there are no upcoming invoices (canceled subscription)
