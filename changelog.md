@@ -1,3 +1,7 @@
+## v1.2.3 - December 31, 2015
+
+* Fix bug where canceled subscriptions showed "You currently have a recurring subscription" message
+
 ## v1.2.2 - December 21, 2015
 
 * Allow "is open" or "is closed" for changing status for usnwc

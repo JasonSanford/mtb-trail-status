@@ -3,6 +3,8 @@
   .alert.alert-info
     - if @current_subscription && @current_subscription.active? && @current_subscription.canceled?
       You have a canceled #{@current_subscription.plan.name} subscription that is still active until #{@current_subscription.term_end_date}.
+    - elsif @current_subscription && @current_subscription.canceled?
+      You have a canceled #{@current_subscription.plan.name} subscription.
     - else
       You currently have a recurring #{@current_subscription.plan.name} subscription.
     View #{link_to 'detailed billing', billing_path} info.
