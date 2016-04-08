@@ -66,12 +66,13 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'staging.mtbtrailstat.us' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.mandrillapp.com',
+    address: 'smtp.sendgrid.net',
     port: '587',
-    password: ENV['MANDRILL_API_TOKEN'],
-    user_name: 'jasonsanford@gmail.com',
+    password: ENV['SENDGRID_PASSWORD'],
+    user_name: ENV['SENDGRID_USER_NAME'],
     domain: 'heroku.com',
-    authentication: :plain
+    authentication: :plain,
+    enable_starttls_auto: true
   }
   config.action_mailer.asset_host = 'http://staging.mtbtrailstat.us'
   config.action_mailer.raise_delivery_errors = false
