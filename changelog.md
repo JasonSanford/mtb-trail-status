@@ -1,3 +1,7 @@
+## v1.2.4 - April 8, 2016
+
+* Change SMTP from Mandril to Sendgrid
+
 ## v1.2.3 - December 31, 2015
 
 * Fix bug where canceled subscriptions showed "You currently have a recurring subscription" message
