@@ -47,6 +47,18 @@ class Trail < ActiveRecord::Base
     "http://mtbtrailstat.us/trails/#{slug}"
   end
 
+  def weather?
+    !weather_json.blank?
+  end
+
+  def weather
+    if weather?
+      Weather.new(weather_json)
+    else
+      nil
+    end
+  end
+
 private
   def notify_subscribers
     if status_changed?

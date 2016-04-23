@@ -2,7 +2,7 @@
   slug: 'lake-norman-state-park'
   latitude: 35.67376
   longitude: -80.93247
-  geojson_url: 'https://jasonsanford.github.io/mtb-trails/trails/dist/lake_norman_state_park.geojson'
+  geojson_url: 'https://jasonsanford.github.io/mtb-trails/trails/lake_norman_state_park.geojson'
 
 - name: 'Sherman Branch'
   slug: 'sherman-branch'

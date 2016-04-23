@@ -1,6 +1,5 @@
-.map-container
-  #map.map
-  .meta
+.meta
+  .container
     .trail
       %h2.name
         = @trail.display_name
@@ -12,5 +11,7 @@
             ago
     .loop
       %h2.name
+.map-container
+  #map.map
 :javascript
   mtb.trail = #{@trail.geojson.to_json};
