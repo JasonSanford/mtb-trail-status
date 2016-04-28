@@ -274,11 +274,8 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise (~> 3.4.0)
   dotenv-rails
-<<<<<<< HEAD
   forecast_io
-=======
   foreman
->>>>>>> master
   friendly_id
   haml-rails (~> 0.9)
   jbuilder (~> 2.0)
