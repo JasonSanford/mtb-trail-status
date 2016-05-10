@@ -13,5 +13,23 @@
       %h2.name
 .map-container
   #map.map
+- if @trail.weather?
+  .weather
+    .container
+      %h3 Weather Outlook
+      .row.forecasts
+        - [@trail.weather.today, @trail.weather.tomorrow, @trail.weather.the_day_after_tomorrow].each_with_index do |forecast, i|
+          .col-md-4.forecast-container
+            .forecast
+              %h4
+                - if i == 0
+                  Today
+                - else
+                  = forecast.date.strftime("%A")
+                %i.icon.wi{class: "wi-forecast-io-#{forecast.icon}"}
+              %p.temp.high #{forecast.high_temp}&deg;
+              %p.temp.low #{forecast.low_temp}&deg;
+              %p.summary= forecast.summary
+      %p.credit Weather powered by #{link_to 'forecast.io', 'http://forecast.io/', target: '_blank'}
 :javascript
   mtb.trail = #{@trail.geojson.to_json};

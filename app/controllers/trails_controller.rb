@@ -13,7 +13,6 @@ class TrailsController < ApplicationController
   end
 
   def show
-    @no_footer = true
   end
 
 private
