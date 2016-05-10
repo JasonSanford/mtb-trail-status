@@ -4,7 +4,7 @@ if $('body.home.index').length > 0 or $('body.trails.index').length > 0
 
   $('a[data-toggle="tab"]').on('shown.bs.tab', (e) ->
     $target = $(e.target)
-    $target.addClass('selected').siblings('a').removeClass('selected')
+    $target.addClass('selected').siblings('a').removeClass("selected")
     if $target.attr('href') is '#tab-map'
       if mapShown
         window.mtb.map.invalidateSize()
