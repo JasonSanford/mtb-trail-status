@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510185531) do
+ActiveRecord::Schema.define(version: 20160510195428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,19 +47,20 @@ ActiveRecord::Schema.define(version: 20160510185531) do
   end
 
   create_table "trails", force: :cascade do |t|
-    t.string   "name",                 null: false
-    t.string   "slug",                 null: false
-    t.float    "latitude",             null: false
-    t.float    "longitude",            null: false
-    t.string   "source",               null: false
+    t.string   "name",                                                 null: false
+    t.string   "slug",                                                 null: false
+    t.float    "latitude",                                             null: false
+    t.float    "longitude",                                            null: false
+    t.string   "source",                                               null: false
     t.string   "display_name"
     t.string   "status"
     t.string   "geojson_url"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
     t.text     "weather_json"
     t.float    "map_center_latitude"
     t.float    "map_center_longitude"
+    t.datetime "status_updated_at",    default: '2016-05-10 20:05:23', null: false
   end
 
   create_table "users", force: :cascade do |t|

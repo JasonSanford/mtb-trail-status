@@ -26,7 +26,9 @@ namespace :scrape do
 
         if trail && trail.status != open_or_closed && !processed_trail_names.include?(trail_name)
           puts "#{trail.name} status changed from #{trail.status} to #{open_or_closed}"
-          trail.update_attribute(:status, open_or_closed)
+          trail.status = open_or_closed
+          trail.status_updated_at = DateTime.now
+          trail.save
         end
       end
 
@@ -60,7 +62,10 @@ namespace :scrape do
 
       if status && usnwc_trail && usnwc_trail.status != status
         puts "USNWC trail status changed from #{usnwc_trail.status} to #{status}"
-        usnwc_trail.update(status: status)
+        #usnwc_trail.update(status: status)
+        usnwc_trail.status = status
+        usnwc_trail.status_updated_at = DateTime.now
+        usnwc_trail.save
       else
         puts "USNWC trail status did not change."
       end
