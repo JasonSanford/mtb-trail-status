@@ -270,6 +270,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler
   byebug
   coffee-rails (~> 4.1.0)
   devise (~> 3.4.0)
@@ -300,4 +301,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.11.2
+   1.12.2
