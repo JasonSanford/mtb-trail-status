@@ -14,9 +14,13 @@ if $('body.home.index').length > 0 or $('body.trails.index').length > 0
           pointToLayer: L.mapbox.marker.style
         })
         window.mtb.map = L.map('map', {
+          scrollWheelZoom: false
           zoomControl: !L.Browser.mobile
           fullscreenControl: true
         })
+        window.mtb.map.on('fullscreenchange', ->
+          window.mtb.map.scrollWheelZoom[if window.mtb.map.isFullscreen() then 'enable' else 'disable']()
+        )
         L.mapbox.styleLayer('mapbox://styles/jcsanford/cinjp1yve001vb2nm28qarpmx').addTo(window.mtb.map)
         window.mtb.map.addLayer(pointGeojsonLayer)
         window.mtb.map.setView(L.latLng(35.228082, -80.8442896), 9)
@@ -54,6 +58,9 @@ if $('body.trails.show').length > 0
     zoomControl: !L.Browser.mobile
     fullscreenControl: true
   })
+  map.on('fullscreenchange', ->
+    map.scrollWheelZoom[if map.isFullscreen() then 'enable' else 'disable']()
+  )
   L.mapbox.styleLayer('mapbox://styles/jcsanford/cinjp1yve001vb2nm28qarpmx').addTo(map)
   map.addLayer(pointGeojsonLayer)
 
