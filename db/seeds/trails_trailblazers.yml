@@ -52,9 +52,3 @@
   slug: 'harrisburg-half'
   latitude: 35.31747
   longitude: -80.65552
-
-- name: 'Rocky Branch Trail'
-  display_name: 'Rocky Branch'
-  slug: 'rocky-branch'
-  latitude: 35.2449197
-  longitude: -81.047937
