@@ -1,3 +1,5 @@
+attribution = "© <a href='https://www.mapbox.com/about/maps/' target='_blank'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright' target='_blank'>OpenStreetMap</a>"
+
 if $('body.home.index').length > 0 or $('body.trails.index').length > 0
   window.mtb.map
   mapShown = false
@@ -18,10 +20,11 @@ if $('body.home.index').length > 0 or $('body.trails.index').length > 0
           zoomControl: !L.Browser.mobile
           fullscreenControl: true
         })
+        window.mtb.map.attributionControl.setPrefix('')
         window.mtb.map.on('fullscreenchange', ->
           window.mtb.map.scrollWheelZoom[if window.mtb.map.isFullscreen() then 'enable' else 'disable']()
         )
-        L.mapbox.styleLayer('mapbox://styles/jcsanford/cinjp1yve001vb2nm28qarpmx').addTo(window.mtb.map)
+        L.mapbox.styleLayer('mapbox://styles/jcsanford/cio4ooe8m003uafnddveg2efw', {attribution}).addTo(window.mtb.map)
         window.mtb.map.addLayer(pointGeojsonLayer)
         window.mtb.map.setView(L.latLng(35.228082, -80.8442896), 9)
         mapShown = true
@@ -53,15 +56,16 @@ if $('body.trails.show').length > 0
   pointGeojsonLayer = L.geoJson(mtb.trail, {
     pointToLayer: L.mapbox.marker.style
   })
-  map = L.map('map', {
+  map = window.map = L.map('map', {
     scrollWheelZoom: false
     zoomControl: !L.Browser.mobile
     fullscreenControl: true
   })
+  map.attributionControl.setPrefix('')
   map.on('fullscreenchange', ->
     map.scrollWheelZoom[if map.isFullscreen() then 'enable' else 'disable']()
   )
-  L.mapbox.styleLayer('mapbox://styles/jcsanford/cinjp1yve001vb2nm28qarpmx').addTo(map)
+  L.mapbox.styleLayer('mapbox://styles/jcsanford/cio4ooe8m003uafnddveg2efw', {attribution}).addTo(map)
   map.addLayer(pointGeojsonLayer)
 
   if mtb.trail.properties.map_center_latitude and mtb.trail.properties.map_center_longitude
