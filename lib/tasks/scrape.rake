@@ -62,7 +62,6 @@ namespace :scrape do
 
       if status && usnwc_trail && usnwc_trail.status != status
         puts "USNWC trail status changed from #{usnwc_trail.status} to #{status}"
-        #usnwc_trail.update(status: status)
         usnwc_trail.status = status
         usnwc_trail.status_updated_at = DateTime.now
         usnwc_trail.save
