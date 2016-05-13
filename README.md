@@ -2,6 +2,8 @@
 
 This is the rails app behind http://mtbtrailstat.us, a mountain bike trail status site and notification service for Charlotte, North Carolina.
 
+![Screenshot of MTB Trail Status](screenshot.png)
+
 ## How It Works
 
 This site tracks the status of a number of mountain bike trail systems in the Charlotte, NC area. Statuses are scraped from either the [Tarheel Trailblazers website](http://www.tarheeltrailblazers.com/) and the [US National Whitewater Center trails twitter feed](https://twitter.com/usnwctrails). If the status of any of those trails changes, any users subscribed to those trails are notified by either SMS or email.
