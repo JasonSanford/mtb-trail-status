@@ -1,3 +1,8 @@
+## v1.3.0 - May 12, 2016
+
+* Add weather info to trail pages
+* Change maps to use Mapbox style layers
+
 ## v1.2.4 - April 8, 2016
 
 * Change SMTP from Mandril to Sendgrid

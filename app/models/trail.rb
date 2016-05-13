@@ -34,9 +34,9 @@ class Trail < ActiveRecord::Base
         display_name: display_name,
         path: trail_path(self),
         status: status,
-        status_date_string: "#{time_ago_in_words updated_at} ago",
-        has_geojson: geojson_url ? true : false,
-        geojson_url: geojson_url,
+        status_date_string: "#{time_ago_in_words status_updated_at} ago",
+        map_center_latitude: map_center_latitude,
+        map_center_longitude: map_center_longitude,
         'marker-symbol' => 'bicycle',
         'marker-color' => (status == 'open' ? COLOR_OPEN : COLOR_CLOSED)
       }
@@ -45,6 +45,18 @@ class Trail < ActiveRecord::Base
 
   def url
     "http://mtbtrailstat.us/trails/#{slug}"
+  end
+
+  def weather?
+    !weather_json.blank?
+  end
+
+  def weather
+    if weather?
+      @weather ||= Weather.new(weather_json)
+    else
+      nil
+    end
   end
 
 private

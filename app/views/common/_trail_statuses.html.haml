@@ -19,8 +19,8 @@
                   %i.glyphicon{class: "#{glyphicon} #{trail.status}"}
                   = trail.display_name
             %td.date.text-muted
-              %span{title: "#{trail.updated_at}"}
-                = time_ago_in_words trail.updated_at
+              %span{title: "#{trail.status_updated_at}"}
+                = time_ago_in_words trail.status_updated_at
                 ago
   .tab-pane{id: 'tab-map'}
     #map.map

@@ -2,7 +2,8 @@
   slug: 'lake-norman-state-park'
   latitude: 35.67376
   longitude: -80.93247
-  geojson_url: 'https://jasonsanford.github.io/mtb-trails/trails/dist/lake_norman_state_park.geojson'
+  map_center_latitude: 35.667623
+  map_center_longitude: -80.931268
 
 - name: 'Sherman Branch'
   slug: 'sherman-branch'
@@ -51,9 +52,3 @@
   slug: 'harrisburg-half'
   latitude: 35.31747
   longitude: -80.65552
-
-- name: 'Rocky Branch Trail'
-  display_name: 'Rocky Branch'
-  slug: 'rocky-branch'
-  latitude: 35.2449197
-  longitude: -81.047937

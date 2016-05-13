@@ -44,11 +44,13 @@ gem 'rollbar', '~> 2.4.0'
 gem 'haml-rails', '~> 0.9'
 gem 'roadie-rails', '~> 1.0'
 gem 'money'
+gem 'forecast_io'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'dotenv-rails'
+  gem 'foreman'
 end
 
 group :staging, :production do
@@ -63,4 +65,5 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'bundler'
 end
