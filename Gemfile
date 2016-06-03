@@ -45,6 +45,7 @@ gem 'haml-rails', '~> 0.9'
 gem 'roadie-rails', '~> 1.0'
 gem 'money'
 gem 'forecast_io'
+gem 'httparty'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

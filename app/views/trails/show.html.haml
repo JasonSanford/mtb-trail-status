@@ -31,5 +31,17 @@
               %p.temp.low #{forecast.low_temp}&deg;
               %p.summary= forecast.summary
       %p.credit Weather powered by #{link_to 'forecast.io', 'http://forecast.io/', target: '_blank'}
+- processed_photos = @trail.instagram_photos.processed
+- if processed_photos.any?
+  .photos
+    .container
+      %h3 Recent Photos
+      - @trail.instagram_photos.processed.first(6).in_groups_of(2) do |group|
+        .row.photos
+          - group.each do |photo|
+            - if photo
+              .col-md-6.photo
+                != photo.obj_hash['html']
+  %script{src: '//platform.instagram.com/en_US/embeds.js'}
 :javascript
   mtb.trail = #{@trail.geojson.to_json};
