@@ -1,0 +1,61 @@
+.meta
+  .container
+    .trail
+      %h2.name
+        = @trail.display_name
+        %small
+          = @trail.status
+          \-
+          %span{title: @trail.status_updated_at}
+            = time_ago_in_words @trail.status_updated_at
+            ago
+    .loop
+      %h2.name
+.map-container
+  #map.map
+- if @trail.weather?
+  .weather
+    .container
+      %h3 Weather Outlook
+      .row.forecasts
+        - [@trail.weather.today, @trail.weather.tomorrow, @trail.weather.the_day_after_tomorrow].each_with_index do |forecast, i|
+          .col-md-4.forecast-container
+            .forecast
+              %h4
+                - if i == 0
+                  Today
+                - else
+                  = forecast.date.strftime("%A")
+                %i.icon.wi{class: "wi-forecast-io-#{forecast.icon}"}
+              %p.temp.high #{forecast.high_temp}&deg;
+              %p.temp.low #{forecast.low_temp}&deg;
+              %p.summary= forecast.summary
+      %p.credit Weather powered by #{link_to 'forecast.io', 'http://forecast.io/', target: '_blank'}
+- processed_photos = @trail.instagram_photos.processed
+- if processed_photos.any?
+  .photos
+    .container
+      %h3 Recent Photos
+      - @trail.instagram_photos.processed.first(6).in_groups_of(2) do |group|
+        .row.photos
+          - group.each do |photo|
+            - if photo
+              .col-md-6.photo
+                != photo.obj_hash['html']
+                - if @admin
+                  = link_to photo,  method: :delete, class: 'btn btn-danger btn-xs btn-block delete', data: { confirm: 'Are you sure?' } do
+                    %span.glyphicon.glyphicon-trash{'aria-hidden' => true}
+                    Delete
+  %script{src: '//platform.instagram.com/en_US/embeds.js'}
+- if @admin
+  .container
+    %hr
+    %h3 Add Photo
+    = form_for(@instagram_photo, url: {action: 'create_photo'}, html: { method: :post, class: 'form-inline' }) do |f|
+      .form-group
+        %label{for: 'short_code'} Instagram Short Code
+        = f.text_field :short_code, autofocus: true, class: 'form-control'
+      = f.hidden_field :trail_id, value: @trail.id
+      = f.submit 'Add', class: 'btn btn-success'
+:javascript
+  mtb.trail = #{@trail.geojson.to_json};

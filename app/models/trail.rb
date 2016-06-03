@@ -2,6 +2,8 @@ class Trail < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   include ActionView::Helpers::DateHelper
 
+  default_scope { order('status DESC', :name) }
+
   extend FriendlyId
   friendly_id :slug
 

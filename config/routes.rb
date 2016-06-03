@@ -16,7 +16,13 @@ Rails.application.routes.draw do
 
   get 'billing' => 'billing#index', as: 'billing'
 
-  resources :trails
+  resources :trails do
+    member do
+      get 'admin'
+      post 'create_photo'
+    end
+  end
+  resources :instagram_photos, only: :destroy
   resources :alerts
   resource :subscriptions, as: :subscription
 end

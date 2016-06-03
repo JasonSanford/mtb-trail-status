@@ -51,7 +51,7 @@ if $('body.home.index').length > 0 or $('body.trails.index').length > 0
         });
   )
 
-if $('body.trails.show').length > 0
+if $('body.trails.show,body.trails.admin').length > 0
   L.mapbox.accessToken = 'pk.eyJ1IjoiamNzYW5mb3JkIiwiYSI6InRJMHZPZFUifQ.F4DMGoNgU3r2AWLY0Eni-w'
   pointGeojsonLayer = L.geoJson(mtb.trail, {
     pointToLayer: L.mapbox.marker.style
