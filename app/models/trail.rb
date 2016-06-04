@@ -2,6 +2,8 @@ class Trail < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   include ActionView::Helpers::DateHelper
 
+  default_scope { order('status DESC', :name) }
+
   extend FriendlyId
   friendly_id :slug
 
@@ -16,6 +18,7 @@ class Trail < ActiveRecord::Base
   after_save :notify_subscribers
 
   has_many :alerts
+  has_many :instagram_photos
 
   def display_name
     read_attribute(:display_name) || name

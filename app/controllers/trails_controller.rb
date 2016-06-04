@@ -1,8 +1,10 @@
 class TrailsController < ApplicationController
   include TrailLoader
 
+  authorize_resource
+
   before_action :load_trails, only: [:index]
-  before_action :load_trail,  only: [:show]
+  before_action :load_trail,  only: [:show, :admin, :create_photo]
   before_action :set_nav, :set_map
 
   def index
@@ -15,7 +17,29 @@ class TrailsController < ApplicationController
   def show
   end
 
+  def create_photo
+    @instagram_photo = InstagramPhoto.new(instagram_photo_params.merge!(trail: @trail))
+
+    if @instagram_photo.save
+      @instagram_photo.process!
+      flash[:success] = 'Instagram photo added!'
+      redirect_to admin_trail_path(@trail)
+    else
+      flash[:error] = "There was a problem adding that photo. :( - #{@instagram_photo.errors.full_messages.join(' - ')}"
+      redirect_to admin_trail_path(@trail)
+    end
+  end
+
+  def admin
+    @admin = true
+    @instagram_photo = InstagramPhoto.new
+  end
+
 private
+  def instagram_photo_params
+    params.require(:instagram_photo).permit(:short_code)
+  end
+
   def set_nav
     @nav = 'trails'
   end

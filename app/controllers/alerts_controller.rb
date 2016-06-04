@@ -1,6 +1,8 @@
 class AlertsController < ApplicationController
   include TrailLoader
 
+  authorize_resource
+
   before_action :authenticate_user!
   before_action :load_trails, only: [:index]
 

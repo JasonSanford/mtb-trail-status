@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
     reasons
   end
 
+  def admin?
+    email == 'jasonsanford@gmail.com'
+  end
+
 private
   def set_phone_verified
     if phone_number_changed?

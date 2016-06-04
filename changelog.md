@@ -1,3 +1,9 @@
+## v1.4.0 - June 3, 2016
+
+* Add Instagram photos to trail pages
+* Add ability for admin users to add/remove Instagram photos
+* Update Rollbar gem
+
 ## v1.3.0 - May 12, 2016
 
 * Add weather info to trail pages

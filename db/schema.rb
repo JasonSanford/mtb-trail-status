@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510201239) do
+ActiveRecord::Schema.define(version: 20160602202653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20160510201239) do
     t.datetime "updated_at",                 null: false
     t.boolean  "sms",        default: false, null: false
     t.boolean  "email",      default: false, null: false
+  end
+
+  create_table "instagram_photos", force: :cascade do |t|
+    t.string   "short_code",                 null: false
+    t.integer  "trail_id",                   null: false
+    t.boolean  "processed",  default: false, null: false
+    t.text     "json"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "plans", force: :cascade do |t|
