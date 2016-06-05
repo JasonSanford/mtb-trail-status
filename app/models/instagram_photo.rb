@@ -3,6 +3,7 @@ class InstagramPhoto < ActiveRecord::Base
 
   validates :short_code, uniqueness: true, presence: true
 
+  default_scope { order('created_at DESC') }
   scope :processed, -> { where(processed: true) }
 
   def oembed_url
