@@ -1,3 +1,7 @@
+## v1.4.1 - June 5, 2016
+
+* Show latest photo first
+
 ## v1.4.0 - June 3, 2016
 
 * Add Instagram photos to trail pages
