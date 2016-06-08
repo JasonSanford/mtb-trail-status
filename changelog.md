@@ -1,3 +1,7 @@
+## v1.4.2 - June 8, 2016
+
+* Add Google Analytics
+
 ## v1.4.1 - June 5, 2016
 
 * Show latest photo first

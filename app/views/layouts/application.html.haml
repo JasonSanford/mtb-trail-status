@@ -25,6 +25,7 @@
     = csrf_meta_tags
 
   %body{class: "#{body_class}"}
+    = render 'common/google_analytics'
     :javascript
       window.mtb = {};
     .top
