@@ -18,8 +18,9 @@
                 = link_to trail do
                   %i.glyphicon{class: "#{glyphicon} #{trail.status}"}
                   = trail.display_name
-            %td.date.text-muted
-              %span{title: "#{trail.status_updated_at}"}
+            %td.date
+              %span.status{class: "#{trail.status}"}= trail.status
+              %span.text-muted{title: "#{trail.status_updated_at}"}
                 = time_ago_in_words trail.status_updated_at
                 ago
   .tab-pane{id: 'tab-map'}

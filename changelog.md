@@ -1,3 +1,9 @@
+## v1.4.3 - June 30, 2016
+
+* Add open or closed text to status table
+* Link to https in text messages
+* Add note about open sourceness
+
 ## v1.4.2 - June 8, 2016
 
 * Add Google Analytics

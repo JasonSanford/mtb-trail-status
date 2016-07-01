@@ -47,7 +47,7 @@ class Trail < ActiveRecord::Base
   end
 
   def url
-    "http://mtbtrailstat.us/trails/#{slug}"
+    "https://mtbtrailstat.us/trails/#{slug}"
   end
 
   def weather?
