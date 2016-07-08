@@ -8,6 +8,8 @@ class TrailsController < ApplicationController
   before_action :set_nav, :set_map
 
   def index
+    @page_title = 'Charlotte Mountain Bike Trail Statuses'
+
     respond_to do |format|
       format.html { render 'trails/index' }
       format.geojson { render json: {type: 'FeatureCollection', features: @trails.map{ |trail| trail.geojson }}}
@@ -15,6 +17,7 @@ class TrailsController < ApplicationController
   end
 
   def show
+    @page_title = @trail.name
   end
 
   def create_photo
