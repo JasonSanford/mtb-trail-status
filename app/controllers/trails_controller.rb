@@ -17,7 +17,7 @@ class TrailsController < ApplicationController
   end
 
   def show
-    @page_title = @trail.name
+    @page_title = @trail.display_name
   end
 
   def create_photo
