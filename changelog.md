@@ -1,3 +1,7 @@
+## v1.4.4 - July 8, 2016
+
+* Add meta-tags gem for better titles and meta
+
 ## v1.4.3 - June 30, 2016
 
 * Add open or closed text to status table
