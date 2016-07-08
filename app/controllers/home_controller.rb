@@ -6,9 +6,7 @@ class HomeController < ApplicationController
 
   def index
     @map = true
-  end
-
-  def oops
+    @page_title = 'Charlotte Mountain Bike Trail Statuses'
   end
 
 private
