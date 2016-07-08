@@ -1,3 +1,7 @@
+## v1.4.3 - July 8, 2016
+
+* Add meta-tags gem for better titles and meta
+
 ## v1.4.2 - June 8, 2016
 
 * Add Google Analytics
