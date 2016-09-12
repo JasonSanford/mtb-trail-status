@@ -17,7 +17,7 @@ class Trail < ActiveRecord::Base
 
   after_save :notify_subscribers
 
-  has_many :alerts
+  has_many :alerts, dependent: :destroy
   has_many :instagram_photos
 
   def display_name
