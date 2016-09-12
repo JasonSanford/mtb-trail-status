@@ -43,11 +43,6 @@
   latitude: 35.31668
   longitude: -80.53436
 
-- name: 'Jetton Park'
-  slug: 'jetton-park'
-  latitude: 35.47649
-  longitude: -80.89985
-
 - name: 'Harrisburg Half'
   slug: 'harrisburg-half'
   latitude: 35.31747
