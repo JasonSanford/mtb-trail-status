@@ -1,3 +1,7 @@
+## v1.4.5 - September 12, 2016
+
+* Remove some trails
+
 ## v1.4.4 - July 8, 2016
 
 * Add meta-tags gem for better titles and meta
