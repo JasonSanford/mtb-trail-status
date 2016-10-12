@@ -1,3 +1,7 @@
+## v1.4.6 - October 11, 2016
+
+* Emergency short-circuit to turn off SMS
+
 ## v1.4.5 - September 12, 2016
 
 * Remove some trails
