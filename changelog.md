@@ -1,3 +1,7 @@
+## v1.4.7 - November 1, 2016
+
+* Ignore routing, and record not found errors in Rollbar
+
 ## v1.4.6 - October 11, 2016
 
 * Emergency short-circuit to turn off SMS
