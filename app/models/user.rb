@@ -16,10 +16,6 @@ class User < ActiveRecord::Base
   has_many :alerts, dependent: :destroy
 
   def can_receive_texts?
-    # Remove default note in reasons_for_not_receiving_texts
-    # if this short-circuit gets removed
-    return false
-
     if phone_verified?
       if is_comped?
         true
@@ -32,7 +28,6 @@ class User < ActiveRecord::Base
   end
 
   def reasons_for_not_receiving_texts
-    reasons = ['Text messages are disabled globally.']
     reasons << 'Phone number is not verified.' unless phone_verified?
     reasons << 'Subscription is not active.'   unless subscription && subscription.active?
     reasons
