@@ -1,3 +1,7 @@
+## v1.4.8 - May 15, 2017
+
+* Re-enable SMS
+
 ## v1.4.7 - November 1, 2016
 
 * Ignore routing, and record not found errors in Rollbar
