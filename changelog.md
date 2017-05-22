@@ -1,3 +1,7 @@
+## v1.4.9 - May 22, 2017
+
+* Fix bug in User#reasons_for_not_receiving_texts
+
 ## v1.4.8 - May 15, 2017
 
 * Re-enable SMS
