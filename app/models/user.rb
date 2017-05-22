@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def reasons_for_not_receiving_texts
+    reasons = []
     reasons << 'Phone number is not verified.' unless phone_verified?
     reasons << 'Subscription is not active.'   unless subscription && subscription.active?
     reasons
